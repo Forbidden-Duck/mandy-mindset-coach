@@ -1,0 +1,15 @@
+{
+    "name": "mandy-thryve",
+    "version": "1.0.0",
+    "description": "Thryve Life Coaching professional website",
+    "main": "./server.js",
+    "private": true,
+    "scripts": {
+        "start": "node server",
+        "website": "npm run start --prefix frontend",
+        "build": "npm run build --prefix frontend"
+    },
+    "keywords": [],
+    "author": "Harrison Howard (Forbidden-Duck)",
+    "license": "UNLICENSED"
+}
