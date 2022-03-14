@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // TODO setup app route
 
 function App() {
     return (
         <Router>
-            <Switch>
-                <Route path="/" render={() => <h1>Home</h1>} />
-            </Switch>
+            <Routes>
+                <Route path="/" element={<h1>Home</h1>} />
+            </Routes>
         </Router>
     );
 }
