@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // TODO setup app route
 
+// TODO downscale images for better performance
 const PRELOAD_IMAGE_URLS = [
     "resources/mandy-portrait.jpg",
     "resources/thryve-full-transparent.png",
