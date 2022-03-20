@@ -25,10 +25,10 @@ const theme = createTheme({
             main: "#e98c14",
             light: "#ffaa17",
             dark: "#cc7608",
+            contrastText: "#000",
         },
     },
 });
-console.log(theme.palette.primary);
 
 ReactDOM.render(
     <StrictMode>
