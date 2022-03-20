@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Navbar from "./components/Navbar/Navbar";
-// TODO setup app route
 
-// TODO downscale images for better performance
+import DefaultRoute from "./components/Routes/DefaultRoute";
+import Home from "./routes/Home/Home";
+
 const PRELOAD_IMAGE_URLS = [
     "resources/mandy-portrait.jpg",
     "resources/thryve-full-transparent.png",
@@ -26,9 +27,13 @@ function App() {
     // TODO 404 page
     return (
         <Router>
-            <Navbar isMobile={isMobile} />
             <Routes>
-                <Route path="/" element={<h1>Home</h1>} />
+                <Route
+                    path="/"
+                    element={
+                        <DefaultRoute isMobile={isMobile} element={<Home />} />
+                    }
+                />
             </Routes>
         </Router>
     );
