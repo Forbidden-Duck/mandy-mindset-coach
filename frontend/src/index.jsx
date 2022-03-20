@@ -13,7 +13,22 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 console.log("Welcome to the console!");
 
 const store = configureStore({ reducer });
-const theme = createTheme({});
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#00ad9c",
+            light: "#00dbc6",
+            dark: "#008578",
+            contrastText: "#000",
+        },
+        secondary: {
+            main: "#e98c14",
+            light: "#ffaa17",
+            dark: "#cc7608",
+        },
+    },
+});
+console.log(theme.palette.primary);
 
 ReactDOM.render(
     <StrictMode>
