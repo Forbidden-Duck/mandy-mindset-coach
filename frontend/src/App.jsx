@@ -4,7 +4,10 @@ import { useMediaQuery } from "@mui/material";
 import Navbar from "./components/Navbar/Navbar";
 
 import DefaultRoute from "./components/Routes/DefaultRoute";
+
 import Home from "./routes/Home/Home";
+
+import Error404 from "./routes/Errors/404";
 
 const PRELOAD_IMAGE_URLS = [
     "resources/mandy-portrait.jpg",
@@ -34,6 +37,7 @@ function App() {
                         <DefaultRoute isMobile={isMobile} element={<Home />} />
                     }
                 />
+                <Route path="*" element={<Error404 />} />
             </Routes>
         </Router>
     );
