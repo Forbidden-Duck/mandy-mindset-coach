@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Navigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 /**
  *
@@ -11,6 +12,7 @@ function DefaultRoute(props) {
         <>
             <Navbar isMobile={props.isMobile} />
             {props.element}
+            <Footer />
         </>
     );
 }
