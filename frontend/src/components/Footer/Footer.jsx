@@ -62,15 +62,19 @@ function Footer() {
                 <Typography variant="body2" sx={body2Sx}>
                     Created by&nbsp;
                 </Typography>
-                <Typography
-                    className={classes.link}
-                    variant="body2"
-                    sx={body2Sx}
-                    color="secondary.dark"
-                    onClick={() => window.open("https://harrisonhoward.xyz/")}
-                >
-                    Harrison Howard
-                </Typography>
+                <Tooltip title="Click me!">
+                    <Typography
+                        className={classes.link}
+                        variant="body2"
+                        sx={body2Sx}
+                        color="secondary.dark"
+                        onClick={() =>
+                            window.open("https://harrisonhoward.xyz/")
+                        }
+                    >
+                        Harrison Howard
+                    </Typography>
+                </Tooltip>
             </div>
         </div>
     );
