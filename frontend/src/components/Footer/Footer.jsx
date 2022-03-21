@@ -10,8 +10,7 @@ function Footer() {
             justifyContent: "flex-end",
             alignItems: "center",
             flexDirection: "column",
-            boxShadow:
-                "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
+            boxShadow: "0px 1px 15px 0px rgb(0 0 0 / 20%)",
             padding: "0.8rem 0rem",
             marginTop: "auto",
         },
@@ -27,6 +26,10 @@ function Footer() {
         },
     }))();
 
+    const body2Sx = {
+        fontSize: "clamp(0rem, 3vw, 0.875rem)",
+    };
+
     return (
         <div className={classes.container}>
             <div className={classes.group}>
@@ -35,22 +38,40 @@ function Footer() {
                     variant="body2"
                     component={Link}
                     to="/termsofservice"
+                    sx={body2Sx}
                 >
                     Terms of Service
                 </Typography>
-                <Typography variant="body2">&nbsp;•&nbsp;</Typography>
+                <Typography variant="body2" sx={body2Sx}>
+                    &nbsp;•&nbsp;
+                </Typography>
                 <Typography
                     className={classes.link}
                     variant="body2"
                     component={Link}
                     to="/privacypolicy"
+                    sx={body2Sx}
                 >
                     Privacy Policy
                 </Typography>
             </div>
-            <Typography variant="body2">
-                Copyright © 2022 Thryve Life Coaching. All rights reserved.
-            </Typography>
+            <div className={classes.group}>
+                <Typography variant="body2" sx={body2Sx} color="primary.dark">
+                    Copyright © 2022 Thryve Life Coaching.&nbsp;
+                </Typography>
+                <Typography variant="body2" sx={body2Sx}>
+                    Created by&nbsp;
+                </Typography>
+                <Typography
+                    className={classes.link}
+                    variant="body2"
+                    sx={body2Sx}
+                    color="secondary.dark"
+                    onClick={() => window.open("https://harrisonhoward.xyz/")}
+                >
+                    Harrison Howard
+                </Typography>
+            </div>
         </div>
     );
 }
