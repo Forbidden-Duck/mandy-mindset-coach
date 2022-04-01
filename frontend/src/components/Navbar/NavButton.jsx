@@ -25,6 +25,13 @@ function NavButton(props) {
             minHeight: props.minHeight || "initial",
             "&:hover": {
                 cursor: "pointer",
+                "& $navButton": {
+                    transform: `${
+                        location.pathname === props.to
+                            ? "unset"
+                            : "translateY(-3px)}"
+                    }`,
+                },
             },
         },
         clearText: {
@@ -55,13 +62,11 @@ function NavButton(props) {
         if (location.pathname === props.to) return;
         animationBox.current.style.width = "100%";
         textRef.current.style.color = BUTTON_ACTIVE_COLOUR;
-        textRef.current.style.transform = "translateY(-3px)";
     };
     const onContainerMouseLeave = () => {
         if (location.pathname === props.to) return;
         animationBox.current.style.width = "0";
         textRef.current.style.color = BUTTON_INACTIVE_COLOUR;
-        textRef.current.style.transform = "translateY(0px)";
     };
     const onContainerClick = () => {
         navigate(props.to);
