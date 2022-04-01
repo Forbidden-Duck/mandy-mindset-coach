@@ -37,7 +37,7 @@ function NavButton(props) {
                     : BUTTON_INACTIVE_COLOUR
             }`,
             userSelect: "none",
-            transition: "color 0.2s ease-in-out",
+            transition: "color 0.2s ease-in-out, transform 0.4s ease-in-out",
         },
         animateBox: {
             position: "absolute",
@@ -51,17 +51,19 @@ function NavButton(props) {
 
     const textRef = useRef(null);
     const animationBox = useRef(null);
-    const onMouseEnter = () => {
+    const onContainerMouseEnter = () => {
         if (location.pathname === props.to) return;
         animationBox.current.style.width = "100%";
         textRef.current.style.color = BUTTON_ACTIVE_COLOUR;
+        textRef.current.style.transform = "translateY(-3px)";
     };
-    const onMouseLeave = () => {
+    const onContainerMouseLeave = () => {
         if (location.pathname === props.to) return;
         animationBox.current.style.width = "0";
         textRef.current.style.color = BUTTON_INACTIVE_COLOUR;
+        textRef.current.style.transform = "translateY(0px)";
     };
-    const onClick = () => {
+    const onContainerClick = () => {
         navigate(props.to);
     };
 
@@ -78,9 +80,9 @@ function NavButton(props) {
     return (
         <div
             className={classes.container}
-            onClick={onClick}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
+            onClick={onContainerClick}
+            onMouseEnter={onContainerMouseEnter}
+            onMouseLeave={onContainerMouseLeave}
         >
             <div className={classes.animateBox} ref={animationBox} />
             <Typography
