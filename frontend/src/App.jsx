@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
-import Navbar from "./components/Navbar/Navbar";
 
+import Navbar from "./components/Navbar/Navbar";
 import DefaultRoute from "./components/Routes/DefaultRoute";
 
 import Home from "./routes/Home/Home";
-
+import About from "./routes/About/About";
 import Error404 from "./routes/Errors/404";
 
 const PRELOAD_IMAGE_URLS = [
@@ -18,8 +18,6 @@ const PRELOAD_IMAGE_URLS = [
 ];
 
 function App() {
-    const isMobile = useMediaQuery("(max-width: 600px)");
-
     // Have the browser preload the images
     useEffect(() => {
         PRELOAD_IMAGE_URLS.forEach((url) => {
@@ -27,15 +25,13 @@ function App() {
         });
     }, []);
 
-    // TODO 404 page
     return (
         <Router>
             <Routes>
+                <Route path="/" element={<DefaultRoute component={Home} />} />
                 <Route
-                    path="/"
-                    element={
-                        <DefaultRoute isMobile={isMobile} element={<Home />} />
-                    }
+                    path="/about"
+                    element={<DefaultRoute component={About} />}
                 />
                 <Route path="*" element={<Error404 />} />
             </Routes>
