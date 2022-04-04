@@ -1,7 +1,9 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
-import hexToRGB from "../../utils/hexToRGB";
 import { Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { motion } from "framer-motion";
+import hexToRGB from "../../utils/hexToRGB";
+import fadeInOut from "../../animations/fadeInOut";
 
 function Home() {
     const classes = makeStyles((theme) => ({
@@ -45,7 +47,7 @@ function Home() {
     }))();
 
     return (
-        <div className={classes.container}>
+        <motion.div className={classes.container} {...fadeInOut()}>
             <div className={classes.group}>
                 <div className={classes.portraitContainer}>
                     <div className={classes.portrait} />
@@ -63,7 +65,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
