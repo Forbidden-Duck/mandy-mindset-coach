@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import { AnimatePresence } from "framer-motion";
 
 import Navbar from "./components/Navbar/Navbar";
 import DefaultRoute from "./components/Routes/DefaultRoute";
@@ -27,14 +28,19 @@ function App() {
 
     return (
         <Router>
-            <Routes>
-                <Route path="/" element={<DefaultRoute component={Home} />} />
-                <Route
-                    path="/about"
-                    element={<DefaultRoute component={About} />}
-                />
-                <Route path="*" element={<Error404 />} />
-            </Routes>
+            <AnimatePresence initial={false} exitBeforeEnter>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<DefaultRoute component={Home} />}
+                    />
+                    <Route
+                        path="/about"
+                        element={<DefaultRoute component={About} />}
+                    />
+                    <Route path="*" element={<Error404 />} />
+                </Routes>
+            </AnimatePresence>
         </Router>
     );
 }
