@@ -13,7 +13,7 @@ function DefaultRoute(props) {
 
     return (
         <>
-            <Navbar isMobile={props.isMobile} />
+            <Navbar isMobile={isMobile} />
             {!!props.element && props.element}
             {!!props.component && <props.component />}
             <Footer />
