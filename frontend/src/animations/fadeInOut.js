@@ -1,10 +1,8 @@
 /**
- * @param {number} duration default: 0.5
- * @param {number} delay default: 0
  * @param {boolean} exit default: true
  * @return {import("framer-motion").MotionProps}
  */
-const fadeInOut = (duration = 0.5, delay = 0, exit = true) => {
+const fadeInOut = (exit = true) => {
     const output = {
         initial: {
             opacity: 0,
@@ -14,10 +12,6 @@ const fadeInOut = (duration = 0.5, delay = 0, exit = true) => {
         },
         exit: {
             opacity: 0,
-        },
-        transition: {
-            duration,
-            delay,
         },
     };
     if (!exit) delete output.exit;
