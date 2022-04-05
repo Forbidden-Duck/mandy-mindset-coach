@@ -106,7 +106,7 @@ function Error404() {
                 </Typography>
             </motion.div>
             <motion.div
-                {...slideUp(false)}
+                {...slideUp(false, true, "vw")}
                 transition={{ duration: 0.5, delay: 0.5 }}
             >
                 <Button
