@@ -17,8 +17,8 @@ function DefaultRoute(props) {
 
     // If the path doesn't exist remove animations from nav and footer
     let animation = {
-        nav: { ...slideDown(false), transition: { duration: 1 } },
-        footer: { ...slideUp(false), transition: { duration: 1 } },
+        nav: { ...slideDown(false), transition: { duration: 0.4 } },
+        footer: { ...slideUp(false), transition: { duration: 0.4 } },
     };
     if (props.paths.includes(location.pathname))
         animation = { nav: {}, footer: {} };
