@@ -8,17 +8,30 @@ import Home from "../../routes/Home/Home";
 import About from "../../routes/About/About";
 import Error404 from "../../routes/Errors/404";
 
+const routesDir = [
+    { path: "/", element: Home, routeComponent: DefaultRoute },
+    { path: "/about", element: About, routeComponent: DefaultRoute },
+];
+
 function AnimatedRoutes() {
     const location = useLocation();
+    const pathsAvailable = routesDir.map((routeProps) => routeProps.path);
 
     return (
         <AnimatePresence initial={false} exitBeforeEnter>
             <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<DefaultRoute component={Home} />} />
-                <Route
-                    path="/about"
-                    element={<DefaultRoute component={About} />}
-                />
+                {routesDir.map((routeProps) => (
+                    <Route
+                        key={routeProps.path}
+                        path={routeProps.path}
+                        element={
+                            <routeProps.routeComponent
+                                component={routeProps.element}
+                                paths={pathsAvailable}
+                            />
+                        }
+                    />
+                ))}
                 <Route path="*" element={<Error404 />} />
             </Routes>
         </AnimatePresence>
