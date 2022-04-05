@@ -2,8 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Button } from "@mui/material";
 import { makeStyles, useTheme } from "@mui/styles";
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+
+import fadeInOut from "../../animations/fadeInOut";
+import slideLeft from "../../animations/slideLeft";
+import slideUp from "../../animations/slideUp";
 
 function Error404() {
     const classes = makeStyles((theme) => ({
@@ -14,6 +19,7 @@ function Error404() {
             flexDirection: "column",
             height: "100%",
             width: "100%",
+            overflow: "hidden",
             "& > *:last-child": {
                 marginTop: "0.8rem",
             },
@@ -22,29 +28,6 @@ function Error404() {
             display: "flex",
             alignItems: "center",
             marginBottom: "1rem",
-        },
-        shake: {
-            animation: "$shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
-            transform: "translate3d(0, 0, 0)",
-            backfaceVisibility: "hidden",
-            perspective: "1000px",
-        },
-        "@keyframes shake": {
-            "10%, 90%": {
-                transform: "translate3d(-2px, 0, 0)",
-            },
-
-            "20%, 80%": {
-                transform: "translate3d(3px, 0, 0)",
-            },
-
-            "30%, 50%, 70%": {
-                transform: "translate3d(-5px, 0, 0)",
-            },
-
-            "40%, 60%": {
-                transform: "translate3d(5px, 0, 0)",
-            },
         },
     }))();
 
@@ -62,7 +45,22 @@ function Error404() {
 
     return (
         <div className={classes.container}>
-            <div className={`${classes.group} ${classes.shake}`}>
+            <motion.div
+                className={`${classes.group} ${classes.shake}`}
+                {...{
+                    ...fadeInOut(),
+                    animate: {
+                        opacity: 1,
+                        x: [0, -20, 20, -20, 20, 0],
+                        transition: {
+                            duration: 0.5,
+                            x: {
+                                duration: 0.6,
+                            },
+                        },
+                    },
+                }}
+            >
                 <Typography
                     variant="h1"
                     color="primary.main"
@@ -84,16 +82,36 @@ function Error404() {
                 >
                     404
                 </Typography>
-            </div>
-            <Typography variant="h4" fontWeight={300} sx={h4Sx}>
-                Sorry, I couldn't find the page you were looking for
-            </Typography>
-            <Typography variant="h5" fontWeight={100} sx={h5Sx}>
-                Are you sure the URL exists?
-            </Typography>
-            <Button variant="outlined" size="medium" component={Link} to="/">
-                Go home
-            </Button>
+            </motion.div>
+            <motion.div
+                {...slideLeft()}
+                transition={{ duration: 0.5, delay: 0.1 }}
+            >
+                <Typography variant="h4" fontWeight={300} sx={h4Sx}>
+                    Sorry, I couldn't find the page you were looking for
+                </Typography>
+            </motion.div>
+            <motion.div
+                {...slideLeft()}
+                transition={{ duration: 0.5, delay: 0.3 }}
+            >
+                <Typography variant="h5" fontWeight={100} sx={h5Sx}>
+                    Are you sure the URL exists?
+                </Typography>
+            </motion.div>
+            <motion.div
+                {...slideUp(false)}
+                transition={{ duration: 0.5, delay: 0.5 }}
+            >
+                <Button
+                    variant="outlined"
+                    size="medium"
+                    component={Link}
+                    to="/"
+                >
+                    Go home
+                </Button>
+            </motion.div>
         </div>
     );
 }
