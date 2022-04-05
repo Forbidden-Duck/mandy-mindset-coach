@@ -17,6 +17,7 @@ function Error404() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            textAlign: "center",
             height: "100%",
             width: "100%",
             overflow: "hidden",
@@ -28,6 +29,9 @@ function Error404() {
             display: "flex",
             alignItems: "center",
             marginBottom: "1rem",
+        },
+        maxWidth: {
+            width: "100%",
         },
     }))();
 
@@ -84,6 +88,7 @@ function Error404() {
                 </Typography>
             </motion.div>
             <motion.div
+                className={classes.maxWidth}
                 {...slideLeft()}
                 transition={{ duration: 0.5, delay: 0.1 }}
             >
@@ -92,6 +97,7 @@ function Error404() {
                 </Typography>
             </motion.div>
             <motion.div
+                className={classes.maxWidth}
                 {...slideLeft()}
                 transition={{ duration: 0.5, delay: 0.3 }}
             >

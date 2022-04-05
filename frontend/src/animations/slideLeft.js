@@ -4,15 +4,18 @@
  * @return {import("framer-motion").MotionProps}
  */
 const slideLeft = (cont = true, exit = true) => {
+    /**
+     * @type {import("framer-motion").MotionProps}
+     */
     const output = {
         initial: {
-            x: "100vw",
+            x: "100%",
         },
         animate: {
             x: 0,
         },
         exit: {
-            x: "-100vw",
+            x: "-100%",
         },
     };
     if (!exit) delete output.exit;
