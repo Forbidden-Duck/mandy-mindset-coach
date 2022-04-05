@@ -19,7 +19,7 @@ const slideLeft = (cont = true, exit = true) => {
         },
     };
     if (!exit) delete output.exit;
-    if (!cont) output.exit = { x: "100vw" };
+    if (!cont) output.exit = { x: "100%" };
     return output;
 };
 export default slideLeft;
