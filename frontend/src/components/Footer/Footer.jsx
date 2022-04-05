@@ -2,8 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Tooltip } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { motion } from "framer-motion";
 
-function Footer() {
+/**
+ *
+ * @param {{ animation: object }} props
+ * @returns
+ */
+function Footer(props) {
     const classes = makeStyles((theme) => ({
         container: {
             display: "flex",
@@ -31,7 +37,7 @@ function Footer() {
     };
 
     return (
-        <div className={classes.container}>
+        <motion.div className={classes.container} {...props.animation}>
             <div className={classes.group}>
                 <Typography
                     className={classes.link}
@@ -76,7 +82,7 @@ function Footer() {
                     </Typography>
                 </Tooltip>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
