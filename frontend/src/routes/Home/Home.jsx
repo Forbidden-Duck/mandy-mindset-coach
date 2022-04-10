@@ -7,8 +7,14 @@ import fadeInOut from "../../animations/fadeInOut";
 
 const MIN_CONTENT_WIDTH = 585;
 const MIN_CONTAINER_WIDTH = 1119;
+let GROUP_VALUE = 796;
 
 function Home() {
+    useEffect(() => {
+        const timer = setTimeout(() => (GROUP_VALUE = "100%"), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     const containerRef = useRef(null);
     const [containerSize, setContainerSize] = useState({
         width: MIN_CONTAINER_WIDTH,
@@ -119,7 +125,7 @@ function Home() {
                     height:
                         containerSize.width < MIN_CONTAINER_WIDTH
                             ? calculatePortraitWidth() * 1.53
-                            : "100%",
+                            : GROUP_VALUE,
                 }}
             >
                 <div className={classes.portraitContainer}>
