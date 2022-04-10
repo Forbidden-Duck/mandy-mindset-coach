@@ -18,7 +18,7 @@ function AnimatedRoutes() {
     const pathsAvailable = routesDir.map((routeProps) => routeProps.path);
 
     return (
-        <AnimatePresence initial={false} exitBeforeEnter>
+        <AnimatePresence exitBeforeEnter>
             <Routes location={location} key={location.pathname}>
                 {routesDir.map((routeProps) => (
                     <Route
