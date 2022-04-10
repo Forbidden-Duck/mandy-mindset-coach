@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Typography, useMediaQuery } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
@@ -9,6 +9,34 @@ const IMAGE_RATIO = 1.533742331288344;
 const IMAGE_HEIGHT = 600;
 
 function Home() {
+    const containerRef = useRef(null);
+    const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
+    useEffect(() => {
+        setContainerSize({
+            width: containerRef.current?.offsetWidth,
+            height: containerRef.current?.offsetHeight,
+        });
+    }, []);
+
+    useEffect(() => {
+        const _containerRef = containerRef.current;
+        window.addEventListener("resize", () => {
+            setContainerSize({
+                width: _containerRef.offsetWidth,
+                height: _containerRef.offsetHeight,
+            });
+        });
+        return () => {
+            window.removeEventListener("resize", () => {
+                setContainerSize({
+                    width: _containerRef.offsetWidth,
+                    height: _containerRef.offsetHeight,
+                });
+            });
+        };
+    }, []);
+
     const classes = makeStyles((theme) => ({
         container: {
             display: "flex",
@@ -48,6 +76,10 @@ function Home() {
             )}, 0.3)`,
             width: "100%",
         },
+        textContainer: {
+            maxWidth: "1000px",
+            margin: "0rem 2rem",
+        },
         "@media (max-width: 976px)": {
             portrait: {
                 height: 400,
@@ -60,16 +92,48 @@ function Home() {
                 width: 250 / IMAGE_RATIO,
             },
         },
+        "@media (max-width: 524px)": {
+            container: {
+                position: "relative",
+            },
+            group: {
+                display: "flex",
+                flexDirection: "column",
+            },
+            portrait: {
+                height: containerSize.width * IMAGE_RATIO,
+                width: containerSize.width,
+            },
+            portraitContainer: {
+                position: "absolute",
+            },
+            contentContainer: {
+                background: "unset",
+                color: "white",
+                height: containerSize.width * IMAGE_RATIO,
+                zIndex: 1,
+            },
+            textContainer: {
+                padding: "1rem",
+                background: `rgba(${Object.values(
+                    hexToRGB(theme.palette.secondary.dark)
+                )}, 0.5)`,
+            },
+        },
     }))();
 
     return (
-        <motion.div className={classes.container} {...fadeInOut()}>
+        <motion.div
+            ref={containerRef}
+            className={classes.container}
+            {...fadeInOut()}
+        >
             <div className={classes.group}>
                 <div className={classes.portraitContainer}>
                     <div className={classes.portrait} />
                 </div>
                 <div className={classes.contentContainer}>
-                    <div style={{ maxWidth: "1000px", margin: "0rem 2rem" }}>
+                    <div className={classes.textContainer}>
                         <Typography
                             variant="h3"
                             fontFamily="Kaushan Script"
