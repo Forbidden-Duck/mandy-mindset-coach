@@ -6,7 +6,7 @@ import hexToRGB from "../../utils/hexToRGB";
 import fadeInOut from "../../animations/fadeInOut";
 
 const MIN_CONTENT_WIDTH = 585;
-const MIN_CONTAINER_WIDTH = 1053;
+const MIN_CONTAINER_WIDTH = 1110;
 
 function Home() {
     const containerRef = useRef(null);
@@ -56,9 +56,6 @@ function Home() {
 
     const calculatePortraitWidth = () =>
         containerSize.width - MIN_CONTENT_WIDTH;
-
-    console.log(contentSize.width);
-    console.log(containerSize.width);
 
     const classes = makeStyles((theme) => ({
         container: {
