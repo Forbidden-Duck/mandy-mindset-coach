@@ -6,14 +6,20 @@ import hexToRGB from "../../utils/hexToRGB";
 import fadeInOut from "../../animations/fadeInOut";
 
 const MIN_CONTENT_WIDTH = 585;
-const MIN_CONTAINER_WIDTH = 1110;
+const MIN_CONTAINER_WIDTH = 1095;
 
 function Home() {
     const containerRef = useRef(null);
-    const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+    const [containerSize, setContainerSize] = useState({
+        width: MIN_CONTAINER_WIDTH,
+        height: 0,
+    });
 
     const contentRef = useRef(null);
-    const [contentSize, setContentSize] = useState({ width: 0, height: 0 });
+    const [contentSize, setContentSize] = useState({
+        width: MIN_CONTENT_WIDTH,
+        height: 0,
+    });
 
     useEffect(() => {
         setContainerSize({
@@ -105,12 +111,17 @@ function Home() {
     }))();
 
     return (
-        <motion.div
-            ref={containerRef}
-            className={classes.container}
-            {...fadeInOut()}
-        >
-            <div className={classes.group}>
+        <motion.div className={classes.container} {...fadeInOut()}>
+            <div
+                ref={containerRef}
+                className={classes.group}
+                style={{
+                    height:
+                        containerSize.width < MIN_CONTAINER_WIDTH
+                            ? calculatePortraitWidth() * 1.53
+                            : "100%",
+                }}
+            >
                 <div className={classes.portraitContainer}>
                     <div className={classes.portrait} />
                 </div>
