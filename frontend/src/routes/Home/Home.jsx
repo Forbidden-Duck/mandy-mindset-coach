@@ -1,74 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Typography } from "@mui/material";
+import React from "react";
+import { Typography, useMediaQuery } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 import hexToRGB from "../../utils/hexToRGB";
 import fadeInOut from "../../animations/fadeInOut";
 
-const MIN_CONTENT_WIDTH = 585;
-const MIN_CONTAINER_WIDTH = 1119;
-let GROUP_VALUE = 796;
+const IMAGE_RATIO = 1.533742331288344;
+const IMAGE_HEIGHT = 600;
 
 function Home() {
-    useEffect(() => {
-        const timer = setTimeout(() => (GROUP_VALUE = "100%"), 100);
-        return () => clearTimeout(timer);
-    }, []);
-
-    const containerRef = useRef(null);
-    const [containerSize, setContainerSize] = useState({
-        width: MIN_CONTAINER_WIDTH,
-        height: 0,
-    });
-
-    const contentRef = useRef(null);
-    const [contentSize, setContentSize] = useState({
-        width: MIN_CONTENT_WIDTH,
-        height: 0,
-    });
-
-    useEffect(() => {
-        setContainerSize({
-            width: containerRef.current?.offsetWidth,
-            height: containerRef.current?.offsetHeight,
-        });
-        setContentSize({
-            width: contentRef.current?.offsetWidth || 0,
-            height: contentRef.current?.offsetHeight || 0,
-        });
-    }, []);
-
-    // Window resize resets the container height
-    useEffect(() => {
-        const _containerRef = containerRef.current;
-        const _contentRef = contentRef.current;
-        window.addEventListener("resize", () => {
-            setContainerSize({
-                width: _containerRef?.offsetWidth,
-                height: _containerRef?.offsetHeight,
-            });
-            setContentSize({
-                width: _contentRef?.offsetWidth || 0,
-                height: _contentRef?.offsetHeight || 0,
-            });
-        });
-        return () => {
-            window.removeEventListener("resize", () => {
-                setContainerSize({
-                    width: _containerRef?.offsetWidth,
-                    height: _containerRef?.offsetHeight,
-                });
-                setContentSize({
-                    width: _contentRef?.offsetWidth || 0,
-                    height: _contentRef?.offsetHeight || 0,
-                });
-            });
-        };
-    }, []);
-
-    const calculatePortraitWidth = () =>
-        containerSize.width - MIN_CONTENT_WIDTH;
-
     const classes = makeStyles((theme) => ({
         container: {
             display: "flex",
@@ -88,14 +28,8 @@ function Home() {
             backgroundImage: "url(/resources/mandy-portrait.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
-            height:
-                containerSize.width < MIN_CONTAINER_WIDTH
-                    ? calculatePortraitWidth() * 1.53
-                    : containerSize.height,
-            width:
-                containerSize.width < MIN_CONTAINER_WIDTH
-                    ? calculatePortraitWidth()
-                    : containerSize.height / 1.53,
+            height: IMAGE_HEIGHT,
+            width: IMAGE_HEIGHT / IMAGE_RATIO,
             zIndex: -1,
         },
         portraitContainer: {
@@ -114,29 +48,39 @@ function Home() {
             )}, 0.3)`,
             width: "100%",
         },
+        "@media (max-width: 976px)": {
+            portrait: {
+                height: 400,
+                width: 400 / IMAGE_RATIO,
+            },
+        },
+        "@media (max-width: 845px)": {
+            portrait: {
+                height: 250,
+                width: 250 / IMAGE_RATIO,
+            },
+        },
     }))();
 
     return (
         <motion.div className={classes.container} {...fadeInOut()}>
-            <div
-                ref={containerRef}
-                className={classes.group}
-                style={{
-                    height:
-                        containerSize.width < MIN_CONTAINER_WIDTH
-                            ? calculatePortraitWidth() * 1.53
-                            : GROUP_VALUE,
-                }}
-            >
+            <div className={classes.group}>
                 <div className={classes.portraitContainer}>
                     <div className={classes.portrait} />
                 </div>
-                <div ref={contentRef} className={classes.contentContainer}>
+                <div className={classes.contentContainer}>
                     <div style={{ maxWidth: "1000px", margin: "0rem 2rem" }}>
-                        <Typography variant="h3" fontFamily="Kaushan Script">
+                        <Typography
+                            variant="h3"
+                            fontFamily="Kaushan Script"
+                            fontSize="clamp(0rem, 5vw, 3rem)"
+                        >
                             Lorem ipsum dolor sit amet.
                         </Typography>
-                        <Typography variant="body2" fontSize="1rem">
+                        <Typography
+                            variant="body2"
+                            fontSize="clamp(0rem, 2.5vw, 1rem)"
+                        >
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Dolor eveniet similique totam repellendus id
                             ut minima rerum voluptatem atque sit?
