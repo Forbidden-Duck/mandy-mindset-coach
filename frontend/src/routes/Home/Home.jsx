@@ -1,16 +1,71 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 import hexToRGB from "../../utils/hexToRGB";
 import fadeInOut from "../../animations/fadeInOut";
 
+const MIN_CONTENT_WIDTH = 585;
+const MIN_CONTAINER_WIDTH = 1053;
+
 function Home() {
+    const containerRef = useRef(null);
+    const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
+    const contentRef = useRef(null);
+    const [contentSize, setContentSize] = useState({ width: 0, height: 0 });
+
+    useEffect(() => {
+        setContainerSize({
+            width: containerRef.current?.offsetWidth,
+            height: containerRef.current?.offsetHeight,
+        });
+        setContentSize({
+            width: contentRef.current?.offsetWidth || 0,
+            height: contentRef.current?.offsetHeight || 0,
+        });
+    }, []);
+
+    // Window resize resets the container height
+    useEffect(() => {
+        const _containerRef = containerRef.current;
+        const _contentRef = contentRef.current;
+        window.addEventListener("resize", () => {
+            setContainerSize({
+                width: _containerRef?.offsetWidth,
+                height: _containerRef?.offsetHeight,
+            });
+            setContentSize({
+                width: _contentRef?.offsetWidth || 0,
+                height: _contentRef?.offsetHeight || 0,
+            });
+        });
+        return () => {
+            window.removeEventListener("resize", () => {
+                setContainerSize({
+                    width: _containerRef?.offsetWidth,
+                    height: _containerRef?.offsetHeight,
+                });
+                setContentSize({
+                    width: _contentRef?.offsetWidth || 0,
+                    height: _contentRef?.offsetHeight || 0,
+                });
+            });
+        };
+    }, []);
+
+    const calculatePortraitWidth = () =>
+        containerSize.width - MIN_CONTENT_WIDTH;
+
+    console.log(contentSize.width);
+    console.log(containerSize.width);
+
     const classes = makeStyles((theme) => ({
         container: {
             display: "flex",
             flexDirection: "column",
             width: "100%",
+            height: "100%",
         },
         group: {
             display: "flex",
@@ -24,8 +79,14 @@ function Home() {
             backgroundImage: "url(/resources/mandy-portrait.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
-            height: "500px",
-            width: "326px",
+            height:
+                containerSize.width < MIN_CONTAINER_WIDTH
+                    ? calculatePortraitWidth() * 1.53
+                    : containerSize.height,
+            width:
+                containerSize.width < MIN_CONTAINER_WIDTH
+                    ? calculatePortraitWidth()
+                    : containerSize.height / 1.53,
             zIndex: -1,
         },
         portraitContainer: {
@@ -47,12 +108,16 @@ function Home() {
     }))();
 
     return (
-        <motion.div className={classes.container} {...fadeInOut()}>
+        <motion.div
+            ref={containerRef}
+            className={classes.container}
+            {...fadeInOut()}
+        >
             <div className={classes.group}>
                 <div className={classes.portraitContainer}>
                     <div className={classes.portrait} />
                 </div>
-                <div className={classes.contentContainer}>
+                <div ref={contentRef} className={classes.contentContainer}>
                     <div style={{ maxWidth: "1000px", margin: "0rem 2rem" }}>
                         <Typography variant="h3" fontFamily="Kaushan Script">
                             Lorem ipsum dolor sit amet.
