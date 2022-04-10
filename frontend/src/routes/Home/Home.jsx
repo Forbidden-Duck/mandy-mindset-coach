@@ -6,7 +6,7 @@ import hexToRGB from "../../utils/hexToRGB";
 import fadeInOut from "../../animations/fadeInOut";
 
 const MIN_CONTENT_WIDTH = 585;
-const MIN_CONTAINER_WIDTH = 1095;
+const MIN_CONTAINER_WIDTH = 1119;
 
 function Home() {
     const containerRef = useRef(null);
