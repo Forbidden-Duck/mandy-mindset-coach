@@ -137,13 +137,13 @@ function Home() {
                         <Typography
                             variant="h3"
                             fontFamily="Kaushan Script"
-                            fontSize="clamp(0rem, 5vw, 3rem)"
+                            fontSize="clamp(0rem, 6vw, 3rem)"
                         >
                             Lorem ipsum dolor sit amet.
                         </Typography>
                         <Typography
                             variant="body2"
-                            fontSize="clamp(0rem, 2.5vw, 1rem)"
+                            fontSize="clamp(0rem, 3vw, 1rem)"
                         >
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Dolor eveniet similique totam repellendus id
