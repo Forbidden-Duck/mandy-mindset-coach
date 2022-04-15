@@ -3,7 +3,9 @@ import { Typography, useMediaQuery } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 import hexToRGB from "../../utils/hexToRGB";
+
 import fadeInOut from "../../animations/fadeInOut";
+import slideLeft from "../../animations/slideLeft";
 
 const IMAGE_RATIO = 1.533742331288344;
 const IMAGE_HEIGHT = 600;
@@ -122,6 +124,8 @@ function Home() {
         },
     }))();
 
+    const isMobileView = useMediaQuery("(max-width: 524px)");
+
     return (
         <motion.div
             ref={containerRef}
@@ -133,23 +137,69 @@ function Home() {
                     <div className={classes.portrait} />
                 </div>
                 <div className={classes.contentContainer}>
-                    <div className={classes.textContainer}>
-                        <Typography
-                            variant="h3"
-                            fontFamily="Kaushan Script"
-                            fontSize="clamp(0rem, 6vw, 3rem)"
+                    {isMobileView ? (
+                        <motion.div
+                            {...slideLeft(false)}
+                            transition={{ duration: 0.5 }}
                         >
-                            Lorem ipsum dolor sit amet.
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            fontSize="clamp(0rem, 3vw, 1rem)"
-                        >
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Dolor eveniet similique totam repellendus id
-                            ut minima rerum voluptatem atque sit?
-                        </Typography>
-                    </div>
+                            <div className={classes.textContainer}>
+                                <Typography
+                                    variant="h3"
+                                    fontFamily="Kaushan Script"
+                                    fontSize="clamp(0rem, 6vw, 3rem)"
+                                >
+                                    Lorem ipsum dolor sit amet.
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    fontSize="clamp(0rem, 3vw, 1rem)"
+                                >
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Dolor eveniet similique
+                                    totam repellendus id ut minima rerum
+                                    voluptatem atque sit?
+                                </Typography>
+                            </div>
+                        </motion.div>
+                    ) : (
+                        <div className={classes.textContainer}>
+                            <motion.div
+                                {...slideLeft(false)}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Typography
+                                    variant="h3"
+                                    fontFamily="Kaushan Script"
+                                    fontSize="clamp(0rem, 6vw, 3rem)"
+                                >
+                                    Lorem ipsum dolor sit amet.
+                                </Typography>
+                            </motion.div>
+                            <motion.div
+                                {...slideLeft(false)}
+                                animate={{
+                                    x: 0,
+                                    transition: {
+                                        x: {
+                                            duration: 0.5,
+                                            delay: 0.3,
+                                        },
+                                    },
+                                }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Typography
+                                    variant="body2"
+                                    fontSize="clamp(0rem, 3vw, 1rem)"
+                                >
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Dolor eveniet similique
+                                    totam repellendus id ut minima rerum
+                                    voluptatem atque sit?
+                                </Typography>
+                            </motion.div>
+                        </div>
+                    )}
                 </div>
             </div>
         </motion.div>
