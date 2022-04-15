@@ -12,7 +12,7 @@ import slideUp from "../../animations/slideUp";
  * @param {{element?: React.ReactNode, component?: JSX.Element, paths?: string[]}} props
  */
 function DefaultRoute(props) {
-    const isMobile = useMediaQuery("(max-width: 600px)");
+    const isMobile = useMediaQuery("(max-width: 650px)");
     const location = useLocation();
 
     // If the path doesn't exist remove animations from nav and footer
