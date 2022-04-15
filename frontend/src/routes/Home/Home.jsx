@@ -131,6 +131,7 @@ function Home() {
             ref={containerRef}
             className={classes.container}
             {...fadeInOut()}
+            transition={{ duration: 0.5 }}
         >
             <div className={classes.group}>
                 <div className={classes.portraitContainer}>
