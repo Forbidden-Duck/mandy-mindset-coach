@@ -19,8 +19,8 @@ const slideLeft = (cont = true, exit = true, customVal = "%") => {
             x: `-100${customVal}`,
         },
     };
-    if (!exit) delete output.exit;
     if (!cont) output.exit = { x: `100${customVal}` };
+    if (!exit) delete output.exit;
     return output;
 };
 export default slideLeft;

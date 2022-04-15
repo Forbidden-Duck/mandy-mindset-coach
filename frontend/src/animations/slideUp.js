@@ -16,8 +16,8 @@ const slideUp = (cont = true, exit = true, customVal = "%") => {
             y: `-100${customVal}`,
         },
     };
-    if (!exit) delete output.exit;
     if (!cont) output.exit = { y: `100${customVal}` };
+    if (!exit) delete output.exit;
     return output;
 };
 export default slideUp;
