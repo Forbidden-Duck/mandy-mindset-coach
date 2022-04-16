@@ -18,7 +18,7 @@ function Footer(props) {
             flexDirection: "column",
             boxShadow: "0px 1px 15px 0px rgb(0 0 0 / 20%)",
             padding: "0.8rem 0rem",
-            marginTop: "auto",
+            marginTop: "2rem",
         },
         group: {
             display: "flex",
