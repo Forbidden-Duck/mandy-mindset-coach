@@ -212,7 +212,7 @@ function Home() {
             >
                 <Grid
                     container
-                    rowSpacing={2}
+                    rowSpacing={5}
                     columnSpacing={3}
                     justifyContent="space-evenly"
                 >
