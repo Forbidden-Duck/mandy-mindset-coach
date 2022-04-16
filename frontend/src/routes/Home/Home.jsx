@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Typography, useMediaQuery } from "@mui/material";
+import { Typography, useMediaQuery, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
+import Testimonial from "../../components/Testimonial/Testimonial";
 import hexToRGB from "../../utils/hexToRGB";
 
 import fadeInOut from "../../animations/fadeInOut";
@@ -44,7 +45,6 @@ function Home() {
             display: "flex",
             flexDirection: "column",
             width: "100%",
-            height: "100%",
         },
         group: {
             display: "flex",
@@ -202,6 +202,48 @@ function Home() {
                         </div>
                     )}
                 </div>
+            </div>
+            <div
+                style={{
+                    marginTop: "3rem",
+                    justifyContent: "space-evenly",
+                    width: "100%",
+                }}
+            >
+                <Grid
+                    container
+                    rowSpacing={2}
+                    columnSpacing={3}
+                    justifyContent="space-evenly"
+                >
+                    <Grid item>
+                        <Testimonial
+                            name="Elizabeth"
+                            quote="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis,
+                            alias cumque tempora iusto reprehenderit voluptate quo
+                            laudantium itaque autem debitis?"
+                            portrait="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_960_720.jpg"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Testimonial
+                            name="Elizabeth"
+                            quote="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis,
+                            alias cumque tempora iusto reprehenderit voluptate quo
+                            laudantium itaque autem debitis?"
+                            portrait="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_960_720.jpg"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Testimonial
+                            name="Elizabeth"
+                            quote="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis,
+                            alias cumque tempora iusto reprehenderit voluptate quo
+                            laudantium itaque autem debitis?"
+                            portrait="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_960_720.jpg"
+                        />
+                    </Grid>
+                </Grid>
             </div>
         </motion.div>
     );
