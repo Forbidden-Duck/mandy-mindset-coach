@@ -82,6 +82,11 @@ function Home() {
             maxWidth: "1000px",
             margin: "0rem 2rem",
         },
+        testimonialContainer: {
+            marginTop: "3rem",
+            justifyContent: "space-evenly",
+            width: "100%",
+        },
         "@media (max-width: 976px)": {
             portrait: {
                 height: 400,
@@ -203,13 +208,7 @@ function Home() {
                     )}
                 </div>
             </div>
-            <div
-                style={{
-                    marginTop: "3rem",
-                    justifyContent: "space-evenly",
-                    width: "100%",
-                }}
-            >
+            <div className={classes.testimonialContainer}>
                 <Grid
                     container
                     rowSpacing={5}
