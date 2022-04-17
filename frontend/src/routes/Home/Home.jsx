@@ -98,7 +98,7 @@ function Home() {
             width: "100%",
             paddingTop: "3rem",
             paddingBottom: "2rem",
-            opacity: 0.3,
+            opacity: 0.2,
         },
         "@media (max-width: 976px)": {
             portrait: {
