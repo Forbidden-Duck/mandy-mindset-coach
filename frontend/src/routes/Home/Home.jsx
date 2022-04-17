@@ -86,7 +86,7 @@ function Home() {
             position: "relative",
             height: "100%",
             width: "100%",
-            marginBottom: "5rem",
+            marginBottom: "4.5rem",
         },
         testimonialBackground: {
             position: "absolute",
@@ -97,7 +97,7 @@ function Home() {
             height: "100%",
             width: "100%",
             paddingTop: "3rem",
-            paddingBottom: "2rem",
+            paddingBottom: "1.5rem",
             opacity: 0.2,
         },
         "@media (max-width: 976px)": {
