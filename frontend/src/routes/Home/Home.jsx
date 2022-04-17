@@ -83,9 +83,22 @@ function Home() {
             margin: "0rem 2rem",
         },
         testimonialContainer: {
-            marginTop: "3rem",
-            justifyContent: "space-evenly",
+            position: "relative",
+            height: "100%",
             width: "100%",
+            marginBottom: "5rem",
+        },
+        testimonialBackground: {
+            position: "absolute",
+            backgroundImage:
+                "url(https://cdn.pixabay.com/photo/2017/03/19/01/43/living-room-2155376_960_720.jpg)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "100%",
+            width: "100%",
+            paddingTop: "3rem",
+            paddingBottom: "2rem",
+            opacity: 0.3,
         },
         "@media (max-width: 976px)": {
             portrait: {
@@ -218,11 +231,13 @@ function Home() {
                 </div>
             </div>
             <div className={classes.testimonialContainer}>
+                <div className={classes.testimonialBackground} />
                 <Grid
                     container
                     rowSpacing={5}
                     columnSpacing={3}
                     justifyContent="space-evenly"
+                    marginTop="2rem"
                 >
                     <Grid item>
                         <Testimonial
