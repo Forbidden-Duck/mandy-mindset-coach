@@ -92,7 +92,10 @@ function Testimonial(props) {
                 <motion.div
                     className={classes.portrait}
                     variants={PORTRAIT_ANIMATION}
-                    viewport={{ once: true }}
+                    viewport={{
+                        once: true,
+                        margin: "150px 0px 0px 0px",
+                    }}
                     initial="initial"
                     whileInView="animate"
                     exit="exit"
