@@ -170,7 +170,16 @@ function Home() {
                     ) : (
                         <div className={classes.textContainer}>
                             <motion.div
-                                {...slideLeft(false)}
+                                {...slideLeft(false, true, "vw")}
+                                animate={{
+                                    x: 0,
+                                    transition: {
+                                        x: {
+                                            duration: 0.5,
+                                            delay: 0.3,
+                                        },
+                                    },
+                                }}
                                 transition={{ duration: 0.5 }}
                             >
                                 <Typography
@@ -182,13 +191,13 @@ function Home() {
                                 </Typography>
                             </motion.div>
                             <motion.div
-                                {...slideLeft(false)}
+                                {...slideLeft(false, true, "vw")}
                                 animate={{
                                     x: 0,
                                     transition: {
                                         x: {
                                             duration: 0.5,
-                                            delay: 0.3,
+                                            delay: 0.6,
                                         },
                                     },
                                 }}
