@@ -30,6 +30,7 @@ const TEXT_ANIMATION = {
     animate: {
         x: 0,
         opacity: 1,
+        willChange: "opacity",
         transition: {
             duration: 0.5,
             delay: 0.2,
@@ -48,6 +49,7 @@ const CHILD_TEXT_ANIMATION = {
     animate: {
         x: 0,
         opacity: 1,
+        willChange: "opacity",
         transition: {
             duration: 0.7,
             delay: 0.4,
@@ -128,6 +130,7 @@ function Testimonial(props) {
             >
                 <Typography
                     variant="body2"
+                    fontSize="0.9rem"
                     sx={{
                         marginTop: "0.3rem",
                         width: "300px",
