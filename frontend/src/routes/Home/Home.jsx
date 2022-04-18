@@ -78,13 +78,42 @@ function Home() {
             )}, 0.3)`,
             width: "100%",
         },
+        homeContainer: {
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            background:
+                "url(https://cdn.pixabay.com/photo/2017/01/14/10/56/people-1979261_960_720.jpg)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "600px",
+        },
+        homeWrap: {
+            position: "absolute",
+            backgroundColor: `rgba(${Object.values(
+                hexToRGB(theme.palette.primary.dark)
+            )}, 0.35)`,
+            height: "100%",
+            width: "100%",
+        },
+        homeText: {
+            maxWidth: "600px",
+            margin: "0rem 2rem",
+            padding: "1rem",
+            color: "white",
+            background: `rgba(${Object.values(
+                hexToRGB(theme.palette.secondary.dark)
+            )}, 0.5)`,
+        },
         textContainer: {
             maxWidth: "1000px",
             margin: "0rem 2rem",
         },
         testimonialContainer: {
             position: "relative",
-            height: "100%",
+            minHeight: "400px",
             width: "100%",
             marginBottom: "4.5rem",
         },
@@ -104,12 +133,11 @@ function Home() {
             position: "absolute",
             backgroundColor: `rgba(${Object.values(
                 hexToRGB(theme.palette.secondary.dark)
-            )}, 0.35)`,
+            )}, 0.2)`,
             height: "100%",
             width: "100%",
             paddingTop: "3rem",
             paddingBottom: "1.5rem",
-            opacity: 0.4,
         },
         "@media (max-width: 976px)": {
             portrait: {
@@ -140,12 +168,12 @@ function Home() {
             },
             contentContainer: {
                 background: "unset",
-                color: "white",
                 height: containerSize.width * IMAGE_RATIO,
                 zIndex: 1,
             },
             textContainer: {
                 padding: "1rem",
+                color: "white",
                 background: `rgba(${Object.values(
                     hexToRGB(theme.palette.secondary.dark)
                 )}, 0.5)`,
@@ -241,6 +269,35 @@ function Home() {
                     )}
                 </div>
             </div>
+            <div className={classes.homeContainer}>
+                <div className={classes.homeWrap} />
+                <motion.div
+                    variants={slideLeft(false)}
+                    initial="initial"
+                    whileInView="animate"
+                    exit="exit"
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                >
+                    <div className={classes.homeText}>
+                        <Typography
+                            variant="h3"
+                            fontFamily="Kaushan Script"
+                            fontSize="clamp(0rem, 6vw, 3rem)"
+                        >
+                            Lorem ipsum dolor sit amet.
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            fontSize="clamp(0rem, 3vw, 1rem)"
+                        >
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Dolor eveniet similique totam repellendus id
+                            ut minima rerum voluptatem atque sit?
+                        </Typography>
+                    </div>
+                </motion.div>
+            </div>
             <div className={classes.testimonialContainer}>
                 <div className={classes.testimonialBackground} />
                 <div className={classes.testimonialColour} />
@@ -249,7 +306,7 @@ function Home() {
                     rowSpacing={5}
                     columnSpacing={3}
                     justifyContent="space-evenly"
-                    marginTop="2rem"
+                    marginTop="3rem"
                 >
                     <Grid item>
                         <Testimonial
