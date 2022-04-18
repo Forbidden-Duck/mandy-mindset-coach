@@ -100,6 +100,17 @@ function Home() {
             paddingBottom: "1.5rem",
             opacity: 0.2,
         },
+        testimonialColour: {
+            position: "absolute",
+            backgroundColor: `rgba(${Object.values(
+                hexToRGB(theme.palette.secondary.dark)
+            )}, 0.35)`,
+            height: "100%",
+            width: "100%",
+            paddingTop: "3rem",
+            paddingBottom: "1.5rem",
+            opacity: 0.4,
+        },
         "@media (max-width: 976px)": {
             portrait: {
                 height: 400,
@@ -232,6 +243,7 @@ function Home() {
             </div>
             <div className={classes.testimonialContainer}>
                 <div className={classes.testimonialBackground} />
+                <div className={classes.testimonialColour} />
                 <Grid
                     container
                     rowSpacing={5}
