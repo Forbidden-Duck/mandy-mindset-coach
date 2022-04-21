@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Tooltip } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 /**
  *
- * @param {{ animation: object }} props
+ * @param {{ animation: object, stop: boolean }} props
  * @returns
  */
 function Footer(props) {
@@ -37,52 +37,62 @@ function Footer(props) {
     };
 
     return (
-        <motion.div className={classes.container} {...props.animation}>
-            <div className={classes.group}>
-                <Typography
-                    className={classes.link}
-                    variant="body2"
-                    component={Link}
-                    to="/termsofservice"
-                    sx={body2Sx}
-                >
-                    Terms of Service
-                </Typography>
-                <Typography variant="body2" sx={body2Sx}>
-                    &nbsp;•&nbsp;
-                </Typography>
-                <Typography
-                    className={classes.link}
-                    variant="body2"
-                    component={Link}
-                    to="/privacypolicy"
-                    sx={body2Sx}
-                >
-                    Privacy Policy
-                </Typography>
-            </div>
-            <div className={classes.group}>
-                <Typography variant="body2" sx={body2Sx} color="primary.dark">
-                    Copyright © 2022 Thryve Life Coaching.&nbsp;
-                </Typography>
-                <Typography variant="body2" sx={body2Sx}>
-                    Created by&nbsp;
-                </Typography>
-                <Tooltip title="Click me!">
+        <AnimatePresence>
+            <motion.div
+                className={classes.container}
+                {...props.animation}
+                animate={props.stop ? "exit" : "animate"}
+            >
+                <div className={classes.group}>
                     <Typography
                         className={classes.link}
                         variant="body2"
+                        component={Link}
+                        to="/termsofservice"
                         sx={body2Sx}
-                        color="secondary.dark"
-                        onClick={() =>
-                            window.open("https://harrisonhoward.xyz/")
-                        }
                     >
-                        Harrison Howard
+                        Terms of Service
                     </Typography>
-                </Tooltip>
-            </div>
-        </motion.div>
+                    <Typography variant="body2" sx={body2Sx}>
+                        &nbsp;•&nbsp;
+                    </Typography>
+                    <Typography
+                        className={classes.link}
+                        variant="body2"
+                        component={Link}
+                        to="/privacypolicy"
+                        sx={body2Sx}
+                    >
+                        Privacy Policy
+                    </Typography>
+                </div>
+                <div className={classes.group}>
+                    <Typography
+                        variant="body2"
+                        sx={body2Sx}
+                        color="primary.dark"
+                    >
+                        Copyright © 2022 Thryve Life Coaching.&nbsp;
+                    </Typography>
+                    <Typography variant="body2" sx={body2Sx}>
+                        Created by&nbsp;
+                    </Typography>
+                    <Tooltip title="Click me!">
+                        <Typography
+                            className={classes.link}
+                            variant="body2"
+                            sx={body2Sx}
+                            color="secondary.dark"
+                            onClick={() =>
+                                window.open("https://harrisonhoward.xyz/")
+                            }
+                        >
+                            Harrison Howard
+                        </Typography>
+                    </Tooltip>
+                </div>
+            </motion.div>
+        </AnimatePresence>
     );
 }
 
