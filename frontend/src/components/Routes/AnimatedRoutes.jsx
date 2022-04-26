@@ -29,13 +29,13 @@ function AnimatedRoutes() {
             variants: slideDown(false),
             initial: "initial",
             animate: "animate",
-            transition: { duration: 0.4 },
+            transition: { duration: 0.5 },
         },
         footer: {
             variants: slideUp(false),
             initial: "initial",
             animate: "animate",
-            transition: { duration: 0.4 },
+            transition: { duration: 0.5 },
         },
     };
 
