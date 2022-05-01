@@ -60,7 +60,7 @@ function ServicesCard(props) {
                     whileInView={{ backgroundPositionX: "0px", opacity: 1 }}
                     exit={{ backgroundPositionX: "-400px", opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px 0px" }}
                 />
             </div>
             <CardContent>
