@@ -77,7 +77,7 @@ function Footer(props) {
                     <Typography variant="body2" sx={body2Sx}>
                         Created by&nbsp;
                     </Typography>
-                    <Tooltip title="Click me!">
+                    <Tooltip title="Click me!" arrow>
                         <Typography
                             className={classes.link}
                             variant="body2"
