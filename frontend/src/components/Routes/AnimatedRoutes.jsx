@@ -16,6 +16,9 @@ import Error404 from "../../routes/Errors/404";
 import slideDown from "../../animations/slideDown";
 import slideUp from "../../animations/slideUp";
 
+import PrimaryRibbon from "../Ribbons/PrimaryRibbon";
+import SecondaryRibbon from "../Ribbons/SecondaryRibbon";
+
 const routesDir = [
     { path: "/", element: Home, routeComponent: DefaultRoute },
     { path: "/about", element: About, routeComponent: DefaultRoute },
@@ -48,6 +51,8 @@ function AnimatedRoutes() {
 
     return (
         <>
+            <PrimaryRibbon />
+            <SecondaryRibbon />
             <Navbar
                 key="navbar"
                 isMobile={isMobile}
