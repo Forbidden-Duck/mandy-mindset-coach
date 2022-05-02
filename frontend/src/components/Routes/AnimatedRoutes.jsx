@@ -28,6 +28,9 @@ function AnimatedRoutes() {
     const location = useLocation();
     const pathsAvailable = routesDir.map((routeProps) => routeProps.path);
 
+    const footerSlide = slideUp(false);
+    footerSlide.initial.display = "initial";
+    footerSlide.exit.transitionEnd = { display: "none" };
     const animation = {
         nav: {
             variants: slideDown(false),
@@ -36,7 +39,7 @@ function AnimatedRoutes() {
             transition: { duration: 0.5 },
         },
         footer: {
-            variants: slideUp(false),
+            variants: footerSlide,
             initial: "initial",
             animate: "animate",
             transition: { duration: 0.5 },
