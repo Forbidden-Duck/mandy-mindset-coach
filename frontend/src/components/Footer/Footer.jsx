@@ -26,7 +26,7 @@ function Footer(props) {
             alignItems: "flex-end",
         },
         link: {
-            color: "#558db5",
+            color: "hsl(205, 39%, 52%)",
             textDecoration: "none",
             cursor: "pointer",
         },
@@ -34,6 +34,10 @@ function Footer(props) {
 
     const body2Sx = {
         fontSize: "clamp(0rem, 3vw, 0.875rem)",
+    };
+
+    const onLinkMouseEvent = (hsl) => {
+        return (evt) => (evt.target.style.color = `hsl(${hsl})`);
     };
 
     return (
@@ -49,6 +53,9 @@ function Footer(props) {
                         variant="body2"
                         component={Link}
                         to="/termsofservice"
+                        onMouseEnter={onLinkMouseEvent("205, 39%, 37%")}
+                        onMouseDown={onLinkMouseEvent("205, 39%, 22%")}
+                        onMouseOut={onLinkMouseEvent("205, 39%, 52%")}
                         sx={body2Sx}
                     >
                         Terms of Service
@@ -61,6 +68,9 @@ function Footer(props) {
                         variant="body2"
                         component={Link}
                         to="/privacypolicy"
+                        onMouseEnter={onLinkMouseEvent("205, 39%, 42%")}
+                        onMouseDown={onLinkMouseEvent("205, 39%, 22%")}
+                        onMouseOut={onLinkMouseEvent("205, 39%, 52%")}
                         sx={body2Sx}
                     >
                         Privacy Policy
@@ -83,6 +93,9 @@ function Footer(props) {
                             variant="body2"
                             sx={body2Sx}
                             color="secondary.dark"
+                            onMouseEnter={onLinkMouseEvent("34, 92%, 32%")}
+                            onMouseDown={onLinkMouseEvent("34, 92%, 12%")}
+                            onMouseOut={onLinkMouseEvent("34, 92%, 42%")}
                             onClick={() =>
                                 window.open("https://harrisonhoward.xyz/")
                             }
