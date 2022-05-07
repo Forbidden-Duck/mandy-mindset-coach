@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import hexToRGB from "../../utils/hexToRGB";
+import hexToHSL from "../../utils/hexToHSL";
 
 import fadeInOut from "../../animations/fadeInOut";
 import slideLeft from "../../animations/slideLeft";
@@ -73,9 +74,9 @@ function Home() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            background: `rgba(${Object.values(
-                hexToRGB(theme.palette.secondary.dark)
-            )}, 0.3)`,
+            background: `hsl(${
+                hexToHSL(theme.palette.secondary.main).h
+            }, 67%, 82%)`,
             width: "100%",
         },
         homeContainer: {
@@ -115,7 +116,7 @@ function Home() {
             position: "relative",
             minHeight: "400px",
             width: "100%",
-            marginBottom: "4.5rem",
+            paddingBottom: "4.5rem",
         },
         testimonialBackground: {
             position: "absolute",
@@ -123,7 +124,7 @@ function Home() {
                 "url(https://cdn.pixabay.com/photo/2017/03/19/01/43/living-room-2155376_960_720.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            height: "100%",
+            height: "85%",
             width: "100%",
             paddingTop: "3rem",
             paddingBottom: "1.5rem",
@@ -131,13 +132,11 @@ function Home() {
         },
         testimonialColour: {
             position: "absolute",
-            backgroundColor: `rgba(${Object.values(
-                hexToRGB(theme.palette.secondary.dark)
-            )}, 0.2)`,
+            backgroundColor: `hsl(${
+                hexToHSL(theme.palette.secondary.main).h
+            }, 67%, 88%)`,
             height: "100%",
             width: "100%",
-            paddingTop: "3rem",
-            paddingBottom: "1.5rem",
         },
         "@media (max-width: 976px)": {
             portrait: {
@@ -299,8 +298,8 @@ function Home() {
                 </motion.div>
             </div>
             <div className={classes.testimonialContainer}>
-                <div className={classes.testimonialBackground} />
                 <div className={classes.testimonialColour} />
+                <div className={classes.testimonialBackground} />
                 <Grid
                     container
                     rowSpacing={5}
