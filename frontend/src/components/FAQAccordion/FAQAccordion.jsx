@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import hexToRGB from "../../utils/hexToRGB";
+import hexToHSL from "../../utils/hexToHSL";
 
 import slideLeft from "../../animations/slideLeft";
 
@@ -38,12 +39,8 @@ const slideLeftOpacity = (suffix) => {
 function FAQAccordion(props) {
     const theme = useTheme();
     const themeProps = {
-        primary: `rgba(${Object.values(
-            hexToRGB(theme.palette.primary.dark)
-        )}, 0.35)`,
-        secondary: `rgba(${Object.values(
-            hexToRGB(theme.palette.secondary.dark)
-        )}, 0.35)`,
+        primary: `hsl(${hexToHSL(theme.palette.primary.main).h}, 35%, 74%)`,
+        secondary: `hsl(${hexToHSL(theme.palette.secondary.main).h}, 66%, 79%)`,
     };
 
     const isMobile = useMediaQuery("(max-width: 600px)");
@@ -65,6 +62,7 @@ function FAQAccordion(props) {
                 TransitionProps={{ unmountOnExit: true }}
                 sx={{
                     background: themeProps[props.theme] || themeProps.primary,
+                    borderBottom: `1px solid ${theme.palette.divider}`,
                     width: "100%",
                     maxWidth: "1000px",
                     padding: "0.3rem 0",
