@@ -168,6 +168,7 @@ function BookFormComponent(props) {
                                     <FormSelect
                                         name="service"
                                         label="Select a service"
+                                        value={props.setActiveService}
                                         values={props.services}
                                         size="small"
                                         sx={{ width: "60%" }}

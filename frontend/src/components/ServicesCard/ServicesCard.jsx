@@ -21,7 +21,7 @@ const slideLeftOpacity = {
 
 /**
  *
- * @param {{ title: string, description: string, image: string }} props
+ * @param {{ title: string, description: string, image: string, setOpen: function, setSelectedService: function }} props
  */
 function ServicesCard(props) {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -50,6 +50,11 @@ function ServicesCard(props) {
             zIndex: 1,
         },
     }))();
+
+    const handleBook = () => {
+        props.setOpen(true);
+        props.setSelectedService(props.title);
+    };
 
     return (
         <Card sx={{ maxWidth: "400px" }}>
@@ -109,6 +114,7 @@ function ServicesCard(props) {
                     <Button
                         variant="contained"
                         size="small"
+                        onClick={handleBook}
                         sx={{ color: "white" }}
                     >
                         Book

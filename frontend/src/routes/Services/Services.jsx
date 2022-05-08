@@ -1,7 +1,8 @@
-import React from "react";
-import { Grid } from "@mui/material";
+import React, { useState } from "react";
+import { Grid, Dialog } from "@mui/material";
 import { motion } from "framer-motion";
 import ServicesCard from "../../components/ServicesCard/ServicesCard";
+import BookFormComponent from "../../components/BookFormComponent.jsx/BookFormComponent";
 
 import fadeInOut from "../../animations/fadeInOut";
 
@@ -36,23 +37,42 @@ const SERVICES_DETAILS = [
 ];
 
 function Services() {
+    const [open, setOpen] = useState(false);
+    const [selectedService, setSelectedService] = useState("");
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
-        <motion.div {...fadeInOut()} transition={{ duration: 0.5 }}>
-            <Grid
-                container
-                columnSpacing={3}
-                justifyContent="space-evenly"
-                marginTop="3rem"
-                marginBottom="3rem"
-                rowGap="1rem"
-            >
-                {SERVICES_DETAILS.map((service, index) => (
-                    <Grid item key={index}>
-                        <ServicesCard {...service} />
-                    </Grid>
-                ))}
-            </Grid>
-        </motion.div>
+        <>
+            <Dialog open={open} onClose={handleClose}>
+                <BookFormComponent
+                    services={SERVICES_DETAILS.map((service) => service.title)}
+                    setActiveService={selectedService}
+                />
+            </Dialog>
+            <motion.div {...fadeInOut()} transition={{ duration: 0.5 }}>
+                <Grid
+                    container
+                    columnSpacing={3}
+                    justifyContent="space-evenly"
+                    marginTop="3rem"
+                    marginBottom="3rem"
+                    rowGap="1rem"
+                >
+                    {SERVICES_DETAILS.map((service, index) => (
+                        <Grid item key={index}>
+                            <ServicesCard
+                                {...service}
+                                setOpen={setOpen}
+                                setSelectedService={setSelectedService}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </motion.div>
+        </>
     );
 }
 
