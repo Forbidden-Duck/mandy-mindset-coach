@@ -281,18 +281,20 @@ function BookFormComponent(props) {
                                     >
                                         Submit
                                     </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
-                                        size="medium"
-                                        sx={{
-                                            color: "white",
-                                            marginRight: "0.5rem",
-                                        }}
-                                        onClick={props.handleClose || null}
-                                    >
-                                        Close
-                                    </Button>
+                                    {props.dialogMode && (
+                                        <Button
+                                            variant="contained"
+                                            color="secondary"
+                                            size="medium"
+                                            sx={{
+                                                color: "white",
+                                                marginRight: "0.5rem",
+                                            }}
+                                            onClick={props.handleClose || null}
+                                        >
+                                            Close
+                                        </Button>
+                                    )}
                                 </motion.div>
                             </CardActions>
                         </Card>
