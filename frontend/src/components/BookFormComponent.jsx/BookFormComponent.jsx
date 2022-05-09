@@ -8,10 +8,10 @@ import {
     CardActions,
     CircularProgress,
 } from "@mui/material";
-import { makeStyles, useTheme } from "@mui/styles";
-import { Form, Formik, useFormik } from "formik";
+import { makeStyles } from "@mui/styles";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { motion, useTime } from "framer-motion";
+import { motion } from "framer-motion";
 import FormSelect from "../FormikComponents/FormSelect";
 import FormTextField from "../FormikComponents/FormTextField";
 import "./BookFormAnimation.scss";
@@ -76,8 +76,6 @@ function BookFormComponent(props) {
             },
         },
     }))();
-
-    const theme = useTheme();
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);

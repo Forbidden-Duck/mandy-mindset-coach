@@ -27,7 +27,7 @@ function FormTextField(props) {
     }, []);
 
     // Force a rerender after 1 second to realign tooltip
-    const [a, forceRender] = useState();
+    const [, forceRender] = useState();
     useEffect(() => {
         const timer = setTimeout(() => {
             forceRender(Date.now());
