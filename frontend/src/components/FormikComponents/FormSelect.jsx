@@ -30,7 +30,6 @@ function FormTextField(props) {
     const [a, forceRender] = useState();
     useEffect(() => {
         const timer = setTimeout(() => {
-            console.log("render");
             forceRender(Date.now());
         }, 1000);
         return () => clearTimeout(timer);
