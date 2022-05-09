@@ -5,6 +5,7 @@ import {
     CardActions,
     Typography,
     Button,
+    Skeleton,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
@@ -21,7 +22,7 @@ const slideLeftOpacity = {
 
 /**
  *
- * @param {{ title: string, description: string, image: string, setOpen: function, setSelectedService: function }} props
+ * @param {{ title: string, description: string, image: string, setOpen: function, setSelectedService: function, isLoading?: boolean }} props
  */
 function ServicesCard(props) {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -59,84 +60,126 @@ function ServicesCard(props) {
     return (
         <Card sx={{ maxWidth: "400px" }}>
             <div className={classes.cardImageContainer}>
-                <motion.div
-                    className={classes.cardImage}
-                    initial={{ backgroundPositionX: "400px", opacity: 0 }}
-                    whileInView={{ backgroundPositionX: "0px", opacity: 1 }}
-                    exit={{ backgroundPositionX: "-400px", opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true, margin: "-100px 0px" }}
-                />
+                {props.isLoading ? (
+                    <Skeleton
+                        variant="rect"
+                        width={`${windowWidth}px`}
+                        height="180px"
+                        animation="wave"
+                    />
+                ) : (
+                    <motion.div
+                        className={classes.cardImage}
+                        initial={{ backgroundPositionX: "400px", opacity: 0 }}
+                        whileInView={{ backgroundPositionX: "0px", opacity: 1 }}
+                        exit={{ backgroundPositionX: "-400px", opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, margin: "-100px 0px" }}
+                    />
+                )}
             </div>
             <CardContent>
-                <motion.div
-                    initial={{ y: "-100px", opacity: 0 }}
-                    whileInView={{
-                        y: 0,
-                        transition: {
-                            type: "spring",
-                            delay: 0.5,
-                            duration: 1,
-                            bounce: 0.6,
-                        },
-                        opacity: 1,
-                    }}
-                    exit={{ y: "-100px" }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true, margin: "-150px 0px" }}
-                >
-                    <Typography variant="h5" fontWeight={500}>
-                        {props.title}
+                {props.isLoading ? (
+                    <Typography variant="h5">
+                        <Skeleton animation="wave" />
                     </Typography>
-                </motion.div>
-                <motion.div
-                    variants={slideLeftOpacity}
-                    initial="initial"
-                    whileInView="animate"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                >
-                    <Typography variant="body1" fontSize="0.93rem">
-                        {props.description}
-                    </Typography>
-                </motion.div>
+                ) : (
+                    <motion.div
+                        initial={{ y: "-100px", opacity: 0 }}
+                        whileInView={{
+                            y: 0,
+                            transition: {
+                                type: "spring",
+                                delay: 0.5,
+                                duration: 1,
+                                bounce: 0.6,
+                            },
+                            opacity: 1,
+                        }}
+                        exit={{ y: "-100px" }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, margin: "-150px 0px" }}
+                    >
+                        <Typography variant="h5" fontWeight={500}>
+                            {props.title}
+                        </Typography>
+                    </motion.div>
+                )}
+                {props.isLoading ? (
+                    <Skeleton
+                        variant="rectangular"
+                        height="110px"
+                        animation="wave"
+                    />
+                ) : (
+                    <motion.div
+                        variants={slideLeftOpacity}
+                        initial="initial"
+                        whileInView="animate"
+                        exit="exit"
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                    >
+                        <Typography variant="body1" fontSize="0.93rem">
+                            {props.description}
+                        </Typography>
+                    </motion.div>
+                )}
             </CardContent>
             <CardActions sx={{ paddingTop: "0.5rem" }}>
-                <motion.div
-                    variants={slideLeftOpacity}
-                    initial="initial"
-                    whileInView="animate"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                >
-                    <Button
-                        variant="contained"
-                        size="small"
-                        onClick={handleBook}
-                        sx={{ color: "white" }}
-                    >
-                        Book
-                    </Button>
-                </motion.div>
-                <motion.div
-                    variants={slideLeftOpacity}
-                    initial="initial"
-                    whileInView="animate"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                >
-                    <Button
-                        variant="contained"
-                        size="small"
-                        color="secondary"
-                        sx={{ color: "white" }}
-                    >
-                        Inquiry
-                    </Button>
-                </motion.div>
+                {props.isLoading ? (
+                    <>
+                        <Skeleton
+                            variant="rectangular"
+                            width="60px"
+                            height="31px"
+                            animation="wave"
+                        />
+                        <Skeleton
+                            variant="rectangular"
+                            width="60px"
+                            height="31px"
+                            animation="wave"
+                        />
+                    </>
+                ) : (
+                    <>
+                        <motion.div
+                            variants={slideLeftOpacity}
+                            initial="initial"
+                            whileInView="animate"
+                            exit="exit"
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}
+                        >
+                            <Button
+                                variant="contained"
+                                size="small"
+                                onClick={handleBook}
+                                sx={{ color: "white" }}
+                            >
+                                Book
+                            </Button>
+                        </motion.div>
+                        <motion.div
+                            variants={slideLeftOpacity}
+                            initial="initial"
+                            whileInView="animate"
+                            exit="exit"
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}
+                        >
+                            <Button
+                                variant="contained"
+                                size="small"
+                                color="secondary"
+                                sx={{ color: "white" }}
+                            >
+                                Inquiry
+                            </Button>
+                        </motion.div>
+                    </>
+                )}
             </CardActions>
         </Card>
     );

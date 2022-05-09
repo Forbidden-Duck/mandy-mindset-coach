@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Dialog } from "@mui/material";
 import { motion } from "framer-motion";
 import ServicesCard from "../../components/ServicesCard/ServicesCard";
@@ -6,7 +6,7 @@ import BookFormComponent from "../../components/BookFormComponent.jsx/BookFormCo
 
 import fadeInOut from "../../animations/fadeInOut";
 
-const SERVICES_DETAILS = [
+const SERVICES_DETAILS_FINAL = [
     {
         title: "Wellness and Career Life Coaching",
         description:
@@ -44,11 +44,22 @@ function Services() {
         setOpen(false);
     };
 
+    const [services, setServices] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+            setServices(SERVICES_DETAILS_FINAL);
+        }, 2000);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <>
             <Dialog open={open} onClose={handleClose}>
                 <BookFormComponent
-                    services={SERVICES_DETAILS.map((service) => service.title)}
+                    services={services.map((service) => service.title)}
                     setActiveService={selectedService}
                     handleClose={handleClose}
                     dialogMode
@@ -63,15 +74,29 @@ function Services() {
                     marginBottom="3rem"
                     rowGap="1rem"
                 >
-                    {SERVICES_DETAILS.map((service, index) => (
-                        <Grid item key={index}>
-                            <ServicesCard
-                                {...service}
-                                setOpen={setOpen}
-                                setSelectedService={setSelectedService}
-                            />
-                        </Grid>
-                    ))}
+                    {isLoading ? (
+                        <>
+                            <Grid item>
+                                <ServicesCard isLoading />
+                            </Grid>
+                            <Grid item>
+                                <ServicesCard isLoading />
+                            </Grid>
+                            <Grid item>
+                                <ServicesCard isLoading />
+                            </Grid>
+                        </>
+                    ) : (
+                        services.map((service, index) => (
+                            <Grid item key={index}>
+                                <ServicesCard
+                                    {...service}
+                                    setOpen={setOpen}
+                                    setSelectedService={setSelectedService}
+                                />
+                            </Grid>
+                        ))
+                    )}
                 </Grid>
             </motion.div>
         </>
