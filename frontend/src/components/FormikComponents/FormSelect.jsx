@@ -10,7 +10,7 @@ import { useField } from "formik";
 
 /**
  *
- * @param {import("@mui/material").SelectProps & { values: string[]}} props
+ * @param {import("@mui/material").SelectProps & { values: string[] }} props
  */
 function FormTextField(props) {
     const { name, values, ...rest } = props;
@@ -24,6 +24,16 @@ function FormTextField(props) {
         if (rest.value) {
             helpers.setValue(rest.value);
         }
+    }, []);
+
+    // Force a rerender after 1 second to realign tooltip
+    const [a, forceRender] = useState();
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            console.log("render");
+            forceRender(Date.now());
+        }, 1000);
+        return () => clearTimeout(timer);
     }, []);
 
     const handleChange = (evt) => {

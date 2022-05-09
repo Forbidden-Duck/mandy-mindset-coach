@@ -50,6 +50,8 @@ function Services() {
                 <BookFormComponent
                     services={SERVICES_DETAILS.map((service) => service.title)}
                     setActiveService={selectedService}
+                    handleClose={handleClose}
+                    dialogMode
                 />
             </Dialog>
             <motion.div {...fadeInOut()} transition={{ duration: 0.5 }}>

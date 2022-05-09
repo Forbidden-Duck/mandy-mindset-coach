@@ -44,7 +44,7 @@ const SLIDE_LEFT_OPACITY = {
 
 /**
  *
- * @param {{ services: string[], setActiveService?: number }} props
+ * @param {{ services: string[], setActiveService?: number, dialogMode?: boolean, handleClose?: function }} props
  */
 function BookFormComponent(props) {
     const classes = makeStyles((theme) => ({
@@ -226,7 +226,6 @@ function BookFormComponent(props) {
                                         required
                                     />
                                 </motion.div>
-                                {/* Service Dropdown */}
                                 <motion.div
                                     variants={SLIDE_LEFT_OPACITY}
                                     initial="initial"
@@ -283,6 +282,18 @@ function BookFormComponent(props) {
                                         }}
                                     >
                                         Submit
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="secondary"
+                                        size="medium"
+                                        sx={{
+                                            color: "white",
+                                            marginRight: "0.5rem",
+                                        }}
+                                        onClick={props.handleClose || null}
+                                    >
+                                        Close
                                     </Button>
                                 </motion.div>
                             </CardActions>
