@@ -12,6 +12,7 @@ import About from "../../routes/About/About";
 import FAQ from "../../routes/FAQ/FAQ";
 import Services from "../../routes/Services/Services";
 import Book from "../../routes/Book/Book";
+import Inquiry from "../../routes/Inquiry/Inquiry";
 import Error404 from "../../routes/Errors/404";
 
 import slideDown from "../../animations/slideDown";
@@ -26,6 +27,7 @@ const routesDir = [
     { path: "/faq", element: FAQ, routeComponent: DefaultRoute },
     { path: "/services", element: Services, routeComponent: DefaultRoute },
     { path: "/book", element: Book, routeComponent: DefaultRoute },
+    { path: "/inquiry", element: Inquiry, routeComponent: DefaultRoute },
 ];
 
 function AnimatedRoutes() {

@@ -17,7 +17,7 @@ function FormTextField(props) {
     const [field, meta, helpers] = useField({
         name,
         type: "text",
-        value: "",
+        value: props.defaultValue || "",
     });
 
     useEffect(() => {
@@ -60,7 +60,9 @@ function FormTextField(props) {
                     disabled={values.includes(rest.value)}
                     select
                 >
-                    <MenuItem value="">&nbsp;</MenuItem>
+                    <MenuItem value={props.defaultValue || ""}>
+                        {props.defaultValue || "\xa0"}
+                    </MenuItem>
                     {values.map((value) => (
                         <MenuItem
                             key={value}

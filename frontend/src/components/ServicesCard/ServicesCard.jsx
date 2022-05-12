@@ -22,7 +22,7 @@ const slideLeftOpacity = {
 
 /**
  *
- * @param {{ title: string, description: string, image: string, setOpen: function, setSelectedService: function, isLoading?: boolean }} props
+ * @param {{ title: string, description: string, image: string, setBookOpen: function, setInquiryOpen: function, setSelectedService: function, isLoading?: boolean }} props
  */
 function ServicesCard(props) {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -53,7 +53,12 @@ function ServicesCard(props) {
     }))();
 
     const handleBook = () => {
-        props.setOpen(true);
+        props.setBookOpen(true);
+        props.setSelectedService(props.title);
+    };
+
+    const handleInquiry = () => {
+        props.setInquiryOpen(true);
         props.setSelectedService(props.title);
     };
 
@@ -173,6 +178,7 @@ function ServicesCard(props) {
                                 variant="contained"
                                 size="small"
                                 color="secondary"
+                                onClick={handleInquiry}
                                 sx={{ color: "white" }}
                             >
                                 Inquiry

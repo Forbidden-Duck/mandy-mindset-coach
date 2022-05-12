@@ -3,6 +3,7 @@ import { Grid, Dialog } from "@mui/material";
 import { motion } from "framer-motion";
 import ServicesCard from "../../components/ServicesCard/ServicesCard";
 import BookFormComponent from "../../components/BookFormComponent.jsx/BookFormComponent";
+import InquiryFormComponent from "../../components/InquiryFormComponent.jsx/InquiryFormComponent";
 
 import fadeInOut from "../../animations/fadeInOut";
 
@@ -37,11 +38,15 @@ const SERVICES_DETAILS_FINAL = [
 ];
 
 function Services() {
-    const [open, setOpen] = useState(false);
+    const [bookOpen, setBookOpen] = useState(false);
+    const [inquiryOpen, setInquiryOpen] = useState(false);
     const [selectedService, setSelectedService] = useState("");
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleBookClose = () => {
+        setBookOpen(false);
+    };
+    const handleInquiryClose = () => {
+        setInquiryOpen(false);
     };
 
     const [services, setServices] = useState([]);
@@ -57,11 +62,19 @@ function Services() {
 
     return (
         <>
-            <Dialog open={open} onClose={handleClose}>
+            <Dialog open={bookOpen} onClose={handleBookClose}>
                 <BookFormComponent
                     services={services.map((service) => service.title)}
                     setActiveService={selectedService}
-                    handleClose={handleClose}
+                    handleClose={handleBookClose}
+                    dialogMode
+                />
+            </Dialog>
+            <Dialog open={inquiryOpen} onClose={handleInquiryClose}>
+                <InquiryFormComponent
+                    services={services.map((service) => service.title)}
+                    setActiveService={selectedService}
+                    handleClose={handleInquiryClose}
                     dialogMode
                 />
             </Dialog>
@@ -91,7 +104,8 @@ function Services() {
                             <Grid item key={index}>
                                 <ServicesCard
                                     {...service}
-                                    setOpen={setOpen}
+                                    setBookOpen={setBookOpen}
+                                    setInquiryOpen={setInquiryOpen}
                                     setSelectedService={setSelectedService}
                                 />
                             </Grid>
