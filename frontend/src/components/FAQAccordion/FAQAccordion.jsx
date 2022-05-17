@@ -32,6 +32,8 @@ const slideLeftOpacity = (suffix) => {
     };
 };
 
+const CARD_COLOUR = 240;
+
 /**
  *
  * @param {{ label: string, theme: "primary" | "secondary", question: string, answer: string, expanded: boolean, onChange: function }} props
@@ -40,7 +42,7 @@ function FAQAccordion(props) {
     const theme = useTheme();
     const themeProps = {
         primary: `hsl(${hexToHSL(theme.palette.primary.main).h}, 35%, 74%)`,
-        secondary: `hsl(${hexToHSL(theme.palette.secondary.main).h}, 66%, 79%)`,
+        secondary: `rgb(${CARD_COLOUR}, ${CARD_COLOUR}, ${CARD_COLOUR})`,
     };
 
     const isMobile = useMediaQuery("(max-width: 600px)");
