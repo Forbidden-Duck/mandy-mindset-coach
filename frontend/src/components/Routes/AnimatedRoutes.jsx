@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { AnimatePresence } from "framer-motion";
 
 import DefaultRoute from "./DefaultRoute";
@@ -17,9 +18,6 @@ import Error404 from "../../routes/Errors/404";
 
 import slideDown from "../../animations/slideDown";
 import slideUp from "../../animations/slideUp";
-
-import PrimaryRibbon from "../Ribbons/PrimaryRibbon";
-import SecondaryRibbon from "../Ribbons/SecondaryRibbon";
 
 const routesDir = [
     { path: "/", element: Home, routeComponent: DefaultRoute },
@@ -55,8 +53,6 @@ function AnimatedRoutes() {
 
     return (
         <>
-            <PrimaryRibbon />
-            <SecondaryRibbon />
             <Navbar
                 key="navbar"
                 isMobile={isMobile}
