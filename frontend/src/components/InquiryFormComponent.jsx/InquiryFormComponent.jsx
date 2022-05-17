@@ -253,6 +253,7 @@ function InquiryFormComponent(props) {
                             </CardContent>
                             <CardActions sx={{ justifyContent: "right" }}>
                                 <motion.div
+                                    style={{ display: "flex" }}
                                     initial={{
                                         x: -2,
                                         y: -70,
@@ -275,31 +276,65 @@ function InquiryFormComponent(props) {
                                     }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        type="submit"
-                                        size="medium"
-                                        sx={{
-                                            color: "white",
-                                            marginRight: "0.5rem",
+                                    <motion.div
+                                        whileHover={{
+                                            scale: 1.05,
+                                            transition: {
+                                                duration: 0.2,
+                                            },
                                         }}
+                                        whileTap={{
+                                            scale: 0.95,
+                                            transition: {
+                                                duration: 0.1,
+                                            },
+                                        }}
+                                        transition={{ duration: 0.5 }}
                                     >
-                                        Submit
-                                    </Button>
-                                    {props.dialogMode && (
                                         <Button
                                             variant="contained"
-                                            color="secondary"
+                                            color="primary"
+                                            type="submit"
                                             size="medium"
                                             sx={{
                                                 color: "white",
                                                 marginRight: "0.5rem",
                                             }}
-                                            onClick={props.handleClose || null}
                                         >
-                                            Close
+                                            Submit
                                         </Button>
+                                    </motion.div>
+                                    {props.dialogMode && (
+                                        <motion.div
+                                            whileHover={{
+                                                scale: 1.05,
+                                                transition: {
+                                                    duration: 0.2,
+                                                },
+                                            }}
+                                            whileTap={{
+                                                scale: 0.95,
+                                                transition: {
+                                                    duration: 0.1,
+                                                },
+                                            }}
+                                            transition={{ duration: 0.5 }}
+                                        >
+                                            <Button
+                                                variant="contained"
+                                                color="secondary"
+                                                size="medium"
+                                                sx={{
+                                                    color: "white",
+                                                    marginRight: "0.5rem",
+                                                }}
+                                                onClick={
+                                                    props.handleClose || null
+                                                }
+                                            >
+                                                Close
+                                            </Button>
+                                        </motion.div>
                                     )}
                                 </motion.div>
                             </CardActions>

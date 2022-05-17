@@ -154,6 +154,18 @@ function ServicesCard(props) {
                             initial="initial"
                             whileInView="animate"
                             exit="exit"
+                            whileHover={{
+                                scale: 1.05,
+                                transition: {
+                                    duration: 0.2,
+                                },
+                            }}
+                            whileTap={{
+                                scale: 0.95,
+                                transition: {
+                                    duration: 0.1,
+                                },
+                            }}
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
                         >
@@ -171,6 +183,18 @@ function ServicesCard(props) {
                             initial="initial"
                             whileInView="animate"
                             exit="exit"
+                            whileHover={{
+                                scale: 1.05,
+                                transition: {
+                                    duration: 0.2,
+                                },
+                            }}
+                            whileTap={{
+                                scale: 0.95,
+                                transition: {
+                                    duration: 0.1,
+                                },
+                            }}
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
                         >
