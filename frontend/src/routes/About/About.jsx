@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import fadeInOut from "../../animations/fadeInOut";
 import slideLeft from "../../animations/slideLeft";
 
+const CARD_COLOUR = 240;
+
 function About() {
     const classes = makeStyles((theme) => ({
         container: {
@@ -15,7 +17,7 @@ function About() {
             width: "100%",
         },
         card: {
-            background: "rgb(245, 245, 245)",
+            background: `rgb(${CARD_COLOUR}, ${CARD_COLOUR}, ${CARD_COLOUR})`,
             width: "80%",
             maxWidth: "1000px",
             margin: "2rem 0",
