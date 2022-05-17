@@ -132,16 +132,12 @@ function FAQ() {
                 initial={{
                     background: `linear-gradient(160deg, rgba(${Object.values(
                         hexToRGB(theme.palette.primary.light)
-                    )},1) 100%, rgba(${Object.values(
-                        hexToRGB(theme.palette.secondary.light)
-                    )},1) 0%)`,
+                    )},1) 100%, rgba(255, 255, 255,1) 0%)`,
                 }}
                 animate={{
                     background: `linear-gradient(160deg, rgba(${Object.values(
                         hexToRGB(theme.palette.primary.light)
-                    )},1) 20%, rgba(${Object.values(
-                        hexToRGB(theme.palette.secondary.light)
-                    )},1) 80%)`,
+                    )},1) 20%, rgba(255, 255, 255,1) 90%)`,
                     transition: {
                         duration: 1,
                         delay: 0.4,
@@ -150,9 +146,7 @@ function FAQ() {
                 exit={{
                     background: `linear-gradient(160deg, rgba(${Object.values(
                         hexToRGB(theme.palette.primary.light)
-                    )},1) 0%, rgba(${Object.values(
-                        hexToRGB(theme.palette.secondary.light)
-                    )},1) 0%)`,
+                    )},1) 0%, rgba(255, 255, 255,1) 0%)`,
                 }}
                 transition={{ duration: 0.6 }}
             >
