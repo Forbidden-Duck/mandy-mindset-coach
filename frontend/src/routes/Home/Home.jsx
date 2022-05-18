@@ -10,7 +10,6 @@ import fadeInOut from "../../animations/fadeInOut";
 import slideLeft from "../../animations/slideLeft";
 
 const IMAGE_RATIO = 1.533742331288344;
-const IMAGE_HEIGHT = 600;
 
 function Home() {
     const containerRef = useRef(null);
@@ -50,36 +49,7 @@ function Home() {
         group: {
             display: "flex",
         },
-        section: {
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-        },
-        portrait: {
-            backgroundImage: "url(/resources/mandy-portrait.jpg)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            height: IMAGE_HEIGHT,
-            width: IMAGE_HEIGHT / IMAGE_RATIO,
-            zIndex: -1,
-        },
-        portraitContainer: {
-            display: "flex",
-            background: `rgba(${Object.values(
-                hexToRGB(theme.palette.primary.dark)
-            )}, 0.35)`,
-        },
         contentContainer: {
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            background: `hsl(${
-                hexToHSL(theme.palette.secondary.main).h
-            }, 67%, 82%)`,
-            width: "100%",
-        },
-        homeContainer: {
             position: "relative",
             display: "flex",
             flexDirection: "column",
@@ -91,7 +61,7 @@ function Home() {
             backgroundSize: "cover",
             height: "600px",
         },
-        homeWrap: {
+        contentWrap: {
             position: "absolute",
             backgroundColor: `rgba(${Object.values(
                 hexToRGB(theme.palette.primary.dark)
@@ -99,7 +69,7 @@ function Home() {
             height: "100%",
             width: "100%",
         },
-        homeText: {
+        contentText: {
             maxWidth: "600px",
             margin: "0rem 2rem",
             padding: "1rem",
@@ -107,10 +77,6 @@ function Home() {
             background: `rgba(${Object.values(
                 hexToRGB(theme.palette.secondary.dark)
             )}, 0.5)`,
-        },
-        textContainer: {
-            maxWidth: "1000px",
-            margin: "0rem 2rem",
         },
         testimonialContainer: {
             position: "relative",
@@ -138,18 +104,6 @@ function Home() {
             height: "100%",
             width: "100%",
         },
-        "@media (max-width: 976px)": {
-            portrait: {
-                height: 400,
-                width: 400 / IMAGE_RATIO,
-            },
-        },
-        "@media (max-width: 845px)": {
-            portrait: {
-                height: 250,
-                width: 250 / IMAGE_RATIO,
-            },
-        },
         "@media (max-width: 524px)": {
             container: {
                 position: "relative",
@@ -158,24 +112,13 @@ function Home() {
                 display: "flex",
                 flexDirection: "column",
             },
-            portrait: {
+            contentContainer: {
+                backgroundImage: "url(/resources/mandy-portrait.jpg)",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
                 height: containerSize.width * IMAGE_RATIO,
                 width: containerSize.width,
-            },
-            portraitContainer: {
-                position: "absolute",
-            },
-            contentContainer: {
-                background: "unset",
-                height: containerSize.width * IMAGE_RATIO,
-                zIndex: 1,
-            },
-            textContainer: {
-                padding: "1rem",
-                color: "white",
-                background: `rgba(${Object.values(
-                    hexToRGB(theme.palette.secondary.dark)
-                )}, 0.5)`,
+                zIndex: -1,
             },
         },
     }))();
@@ -189,87 +132,8 @@ function Home() {
             {...fadeInOut()}
             transition={{ duration: 0.5 }}
         >
-            <div className={classes.group}>
-                <div className={classes.portraitContainer}>
-                    <div className={classes.portrait} />
-                </div>
-                <div className={classes.contentContainer}>
-                    {isMobileView ? (
-                        <motion.div
-                            {...slideLeft(false)}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <div className={classes.textContainer}>
-                                <Typography
-                                    variant="h3"
-                                    fontFamily="Kaushan Script"
-                                    fontSize="clamp(0rem, 6vw, 3rem)"
-                                >
-                                    Lorem ipsum dolor sit amet.
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    fontSize="clamp(0rem, 3vw, 1rem)"
-                                >
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Dolor eveniet similique
-                                    totam repellendus id ut minima rerum
-                                    voluptatem atque sit?
-                                </Typography>
-                            </div>
-                        </motion.div>
-                    ) : (
-                        <div className={classes.textContainer}>
-                            <motion.div
-                                {...slideLeft(false, true, "vw")}
-                                animate={{
-                                    x: 0,
-                                    transition: {
-                                        x: {
-                                            duration: 0.5,
-                                            delay: 0.3,
-                                        },
-                                    },
-                                }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <Typography
-                                    variant="h3"
-                                    fontFamily="Kaushan Script"
-                                    fontSize="clamp(0rem, 6vw, 3rem)"
-                                >
-                                    Lorem ipsum dolor sit amet.
-                                </Typography>
-                            </motion.div>
-                            <motion.div
-                                {...slideLeft(false, true, "vw")}
-                                animate={{
-                                    x: 0,
-                                    transition: {
-                                        x: {
-                                            duration: 0.5,
-                                            delay: 0.6,
-                                        },
-                                    },
-                                }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <Typography
-                                    variant="body2"
-                                    fontSize="clamp(0rem, 3vw, 1rem)"
-                                >
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Dolor eveniet similique
-                                    totam repellendus id ut minima rerum
-                                    voluptatem atque sit?
-                                </Typography>
-                            </motion.div>
-                        </div>
-                    )}
-                </div>
-            </div>
-            <div className={classes.homeContainer}>
-                <div className={classes.homeWrap} />
+            <div className={classes.contentContainer}>
+                <div className={classes.contentWrap} />
                 <motion.div
                     variants={slideLeft(false)}
                     initial="initial"
@@ -278,7 +142,7 @@ function Home() {
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                 >
-                    <div className={classes.homeText}>
+                    <div className={classes.contentText}>
                         <Typography
                             variant="h3"
                             fontFamily="Kaushan Script"
