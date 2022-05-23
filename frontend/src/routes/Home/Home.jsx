@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Typography, useMediaQuery, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Testimonial from "../../components/Testimonial/Testimonial";
+import ImageSlideshow from "../../components/ImageSlideshow/ImageSlideshow";
 import hexToRGB from "../../utils/hexToRGB";
 import hexToHSL from "../../utils/hexToHSL";
 
@@ -10,6 +11,13 @@ import fadeInOut from "../../animations/fadeInOut";
 import slideLeft from "../../animations/slideLeft";
 
 const IMAGE_RATIO = 1.533742331288344;
+const IMAGES = [
+    "https://cdn.pixabay.com/photo/2015/02/02/11/09/office-620822__340.jpg",
+    "https://cdn.pixabay.com/photo/2018/03/03/20/02/laptop-3196481__340.jpg",
+    "https://cdn.pixabay.com/photo/2016/08/23/12/37/files-1614223__340.jpg",
+    "https://cdn.pixabay.com/photo/2016/08/29/08/55/work-1627703__340.jpg",
+    "https://cdn.pixabay.com/photo/2015/01/08/18/26/man-593333__480.jpg",
+];
 
 function Home() {
     const containerRef = useRef(null);
@@ -77,6 +85,11 @@ function Home() {
             background: `rgba(${Object.values(
                 hexToRGB(theme.palette.secondary.dark)
             )}, 0.5)`,
+        },
+        slideshowContainer: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
         },
         testimonialContainer: {
             position: "relative",
@@ -160,6 +173,9 @@ function Home() {
                         </Typography>
                     </div>
                 </motion.div>
+            </div>
+            <div className={classes.slideshowContainer}>
+                <ImageSlideshow images={IMAGES} />
             </div>
             <div className={classes.testimonialContainer}>
                 <div className={classes.testimonialColour} />
