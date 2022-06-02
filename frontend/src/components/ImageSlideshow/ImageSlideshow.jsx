@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { IconButton } from "@mui/material";
 import { makeStyles, useTheme } from "@mui/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,11 +38,34 @@ const SWIPE_POWER = (offset, velocity) => {
  * @param {{ images: string[] }} props
  */
 function ImageSlideshow(props) {
+    const containerRef = useRef(null);
+    const [containerSize, setContainerSize] = useState({
+        width: 0,
+        height: 0,
+    });
+    const [imgSize, setImgSize] = useState({ width: 0, height: 0 });
+
+    useEffect(() => {
+        const handleResize = () => {
+            setContainerSize({
+                width: containerRef.current?.offsetWidth,
+                height: containerRef.current?.offsetHeight,
+            });
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+    console.log(1, containerSize);
+    console.log(2, imgSize);
+
     const classes = makeStyles((theme) => ({
         container: {
             display: "flex",
             justifyContent: "center",
-            height: "600px",
+            height: containerSize.width <= imgSize.width ? "100%" : "600px",
             width: "100%",
         },
         image: {
@@ -51,6 +74,12 @@ function ImageSlideshow(props) {
         },
         left: {
             float: "left",
+        },
+        "@media (max-width: 600px)": {
+            container: {
+                height: "unset",
+                maxHeight: "600px",
+            },
         },
     }))();
     const theme = useTheme();
@@ -93,7 +122,7 @@ function ImageSlideshow(props) {
             >
                 <FontAwesomeIcon icon={faArrowLeft} size="lg" />
             </IconButton>
-            <div className={classes.container}>
+            <div className={classes.container} ref={containerRef}>
                 <div className={classes.image}>
                     <AnimatePresence
                         initial={false}
@@ -107,6 +136,12 @@ function ImageSlideshow(props) {
                                 height: "auto",
                             }}
                             src={props.images[imageIndex]}
+                            onLoad={({ target }) =>
+                                setImgSize({
+                                    width: target.offsetWidth,
+                                    height: target.offsetHeight,
+                                })
+                            }
                             custom={direction}
                             variants={VARIANTS}
                             initial="initial"
