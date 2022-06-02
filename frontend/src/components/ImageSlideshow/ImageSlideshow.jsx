@@ -40,7 +40,17 @@ const SWIPE_POWER = (offset, velocity) => {
 function ImageSlideshow(props) {
     const classes = makeStyles((theme) => ({
         container: {
-            maxHeight: "600px",
+            display: "flex",
+            justifyContent: "center",
+            height: "600px",
+            width: "100%",
+        },
+        image: {
+            display: "flex",
+            height: "100%",
+        },
+        left: {
+            float: "left",
         },
     }))();
     const theme = useTheme();
@@ -75,6 +85,7 @@ function ImageSlideshow(props) {
     return (
         <>
             <IconButton
+                className={classes.left}
                 color="secondary"
                 size="large"
                 sx={ButtonProps}
@@ -83,46 +94,48 @@ function ImageSlideshow(props) {
                 <FontAwesomeIcon icon={faArrowLeft} size="lg" />
             </IconButton>
             <div className={classes.container}>
-                <AnimatePresence
-                    initial={false}
-                    custom={direction}
-                    exitBeforeEnter
-                >
-                    <motion.img
-                        key={imageIndex}
-                        style={{
-                            width: "100%",
-                            height: "auto",
-                        }}
-                        src={props.images[imageIndex]}
+                <div className={classes.image}>
+                    <AnimatePresence
+                        initial={false}
                         custom={direction}
-                        variants={VARIANTS}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        transition={{
-                            x: {
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 30,
-                            },
-                            opacity: {
-                                duration: 0.2,
-                            },
-                        }}
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={1}
-                        onDragEnd={(evt, { offset, velocity }) => {
-                            const swipe = SWIPE_POWER(offset.x, velocity.x);
-                            if (swipe < -SWIPE_CONFIDENCE_THRESHOLD) {
-                                paginate(1);
-                            } else if (swipe > SWIPE_CONFIDENCE_THRESHOLD) {
-                                paginate(-1);
-                            }
-                        }}
-                    />
-                </AnimatePresence>
+                        exitBeforeEnter
+                    >
+                        <motion.img
+                            key={imageIndex}
+                            style={{
+                                width: "100%",
+                                height: "auto",
+                            }}
+                            src={props.images[imageIndex]}
+                            custom={direction}
+                            variants={VARIANTS}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={{
+                                x: {
+                                    type: "spring",
+                                    stiffness: 300,
+                                    damping: 30,
+                                },
+                                opacity: {
+                                    duration: 0.2,
+                                },
+                            }}
+                            drag="x"
+                            dragConstraints={{ left: 0, right: 0 }}
+                            dragElastic={1}
+                            onDragEnd={(evt, { offset, velocity }) => {
+                                const swipe = SWIPE_POWER(offset.x, velocity.x);
+                                if (swipe < -SWIPE_CONFIDENCE_THRESHOLD) {
+                                    paginate(1);
+                                } else if (swipe > SWIPE_CONFIDENCE_THRESHOLD) {
+                                    paginate(-1);
+                                }
+                            }}
+                        />
+                    </AnimatePresence>
+                </div>
             </div>
             <IconButton
                 color="secondary"
