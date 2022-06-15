@@ -21,7 +21,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NavButton from "./NavButton";
 
-const MIN_NAV_HEIGHT = 68;
+const MIN_NAV_HEIGHT = 88;
+const LOGO_WIDTH = 200;
+const LOGO_RATIO = 0.60606060606060606060606060606061;
 
 /**
  *
@@ -36,11 +38,11 @@ function DesktopNavbar(props) {
             background: "#fff",
         },
         logo: {
-            backgroundImage: "url(resources/thryve-full-transparent.png)",
+            backgroundImage: "url(resources/mandy-logo-transparent.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            width: "210px",
-            height: "54px",
+            width: LOGO_WIDTH,
+            height: LOGO_WIDTH * LOGO_RATIO,
             transform: "translateY(0px)",
             "&:hover": {
                 cursor: "pointer",

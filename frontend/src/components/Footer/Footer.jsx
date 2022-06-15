@@ -83,7 +83,7 @@ function Footer(props) {
                         sx={body2Sx}
                         color="primary.dark"
                     >
-                        Copyright © 2022 Thryve Life Coaching.&nbsp;
+                        Copyright © 2022 Mandy Watene Mindset Coach.&nbsp;
                     </Typography>
                     <Typography variant="body2" sx={body2Sx}>
                         Created by&nbsp;

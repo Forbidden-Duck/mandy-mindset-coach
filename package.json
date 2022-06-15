@@ -1,7 +1,7 @@
 {
-    "name": "mandy-thryve",
+    "name": "mandy-mindset-coach",
     "version": "1.0.0",
-    "description": "Thryve Life Coaching professional website",
+    "description": "Mandy Watene Mindset Coach professional website",
     "main": "./server.js",
     "private": true,
     "scripts": {
@@ -14,12 +14,12 @@
     "license": "UNLICENSED",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Forbidden-Duck/mandy-thryve.git"
+        "url": "git+https://github.com/Forbidden-Duck/mandy-mindset-coach.git"
     },
     "bugs": {
-        "url": "https://github.com/Forbidden-Duck/mandy-thryve/issues"
+        "url": "https://github.com/Forbidden-Duck/mandy-mindset-coach/issues"
     },
-    "homepage": "https://github.com/Forbidden-Duck/mandy-thryve#readme",
+    "homepage": "https://github.com/Forbidden-Duck/mandy-mindset-coach#readme",
     "dependencies": {
         "@forbidden_duck/super-mongo": "^1.0.1",
         "@sendgrid/mail": "^7.6.2",
