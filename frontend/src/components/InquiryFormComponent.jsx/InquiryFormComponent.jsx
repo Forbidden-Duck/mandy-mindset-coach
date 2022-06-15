@@ -82,9 +82,8 @@ function InquiryFormComponent(props) {
     const [isSuccess, setIsSuccess] = useState(false);
 
     const handleSubmit = (values, { resetForm }) => {
-        console.log("Submit", values);
         setIsLoading(true);
-        //resetForm();
+        resetForm();
     };
 
     useEffect(() => {

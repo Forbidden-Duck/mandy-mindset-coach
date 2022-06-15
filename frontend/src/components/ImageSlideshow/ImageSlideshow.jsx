@@ -58,8 +58,6 @@ function ImageSlideshow(props) {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-    console.log(1, containerSize);
-    console.log(2, imgSize);
 
     const classes = makeStyles((theme) => ({
         container: {
