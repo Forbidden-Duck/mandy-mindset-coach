@@ -10,6 +10,7 @@ import hexToHSL from "../../utils/hexToHSL";
 import fadeInOut from "../../animations/fadeInOut";
 import slideLeft from "../../animations/slideLeft";
 
+const IMAGE_HEIGHT = 600;
 const IMAGE_RATIO = 1.533742331288344;
 const IMAGES = [
     "https://cdn.pixabay.com/photo/2015/02/02/11/09/office-620822__340.jpg",
@@ -57,34 +58,33 @@ function Home() {
         group: {
             display: "flex",
         },
-        contentContainer: {
-            position: "relative",
+        portraitContainer: {
+            display: "flex",
+            background: `rgba(${Object.values(
+                hexToRGB(theme.palette.primary.dark)
+            )}, 0.2)`,
+        },
+        portraitContent: {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            background:
-                "url(https://cdn.pixabay.com/photo/2017/01/14/10/56/people-1979261_960_720.jpg)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            height: "600px",
-        },
-        contentWrap: {
-            position: "absolute",
-            backgroundColor: `rgba(${Object.values(
-                hexToRGB(theme.palette.primary.dark)
-            )}, 0.35)`,
-            height: "100%",
+            background: `hsl(${
+                hexToHSL(theme.palette.secondary.main).h
+            }, 67%, 82%)`,
             width: "100%",
         },
-        contentText: {
-            maxWidth: "600px",
+        portraitImage: {
+            backgroundImage: "url(/resources/mandy-portrait.jpg)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            height: IMAGE_HEIGHT,
+            width: IMAGE_HEIGHT / IMAGE_RATIO,
+            zIndex: -1,
+        },
+        portraitText: {
+            maxWidth: "1000px",
             margin: "0rem 2rem",
-            padding: "1rem",
-            color: "white",
-            background: `rgba(${Object.values(
-                hexToRGB(theme.palette.secondary.dark)
-            )}, 0.5)`,
         },
         slideshowContainer: {
             display: "flex",
@@ -125,14 +125,6 @@ function Home() {
                 display: "flex",
                 flexDirection: "column",
             },
-            contentContainer: {
-                backgroundImage: "url(/resources/mandy-portrait.jpg)",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-                height: containerSize.width * IMAGE_RATIO,
-                width: containerSize.width,
-                zIndex: -1,
-            },
         },
     }))();
 
@@ -145,17 +137,12 @@ function Home() {
             {...fadeInOut()}
             transition={{ duration: 0.5 }}
         >
-            <div className={classes.contentContainer}>
-                <div className={classes.contentWrap} />
-                <motion.div
-                    variants={slideLeft(false)}
-                    initial="initial"
-                    whileInView="animate"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                >
-                    <div className={classes.contentText}>
+            <div className={classes.group}>
+                <div className={classes.portraitContainer}>
+                    <div className={classes.portraitImage} />
+                </div>
+                <div className={classes.portraitContent}>
+                    <div className={classes.portraitText}>
                         <Typography
                             variant="h3"
                             fontFamily="Kaushan Script"
@@ -172,7 +159,7 @@ function Home() {
                             ut minima rerum voluptatem atque sit?
                         </Typography>
                     </div>
-                </motion.div>
+                </div>
             </div>
             <div className={classes.slideshowContainer}>
                 <ImageSlideshow images={IMAGES} />
