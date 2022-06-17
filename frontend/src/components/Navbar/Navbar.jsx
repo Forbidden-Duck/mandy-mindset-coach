@@ -36,6 +36,7 @@ function DesktopNavbar(props) {
             justifyContent: "space-between",
             height: MIN_NAV_HEIGHT,
             background: "#fff",
+            overflow: "hidden",
         },
         logo: {
             backgroundImage: "url(resources/mandy-logo-transparent.png)",
