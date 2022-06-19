@@ -33,19 +33,15 @@ function Home() {
 
     useEffect(() => {
         const _containerRef = containerRef.current;
-        window.addEventListener("resize", () => {
+        const resize = () => {
             setContainerSize({
                 width: _containerRef.offsetWidth,
                 height: _containerRef.offsetHeight,
             });
-        });
+        };
+        window.addEventListener("resize", resize);
         return () => {
-            window.removeEventListener("resize", () => {
-                setContainerSize({
-                    width: _containerRef.offsetWidth,
-                    height: _containerRef.offsetHeight,
-                });
-            });
+            window.removeEventListener("resize", resize);
         };
     }, []);
 
@@ -61,7 +57,7 @@ function Home() {
         portraitContainer: {
             display: "flex",
             background: `rgba(${Object.values(
-                hexToRGB(theme.palette.primary.dark)
+                hexToRGB(theme.palette.secondary.main)
             )}, 0.2)`,
         },
         portraitContent: {
@@ -69,9 +65,9 @@ function Home() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            background: `hsl(${
-                hexToHSL(theme.palette.secondary.main).h
-            }, 67%, 82%)`,
+            backgroundImage: "url(/resources/spiral-white.jpg)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
             width: "100%",
         },
         portraitImage: {
@@ -112,10 +108,22 @@ function Home() {
         testimonialColour: {
             position: "absolute",
             backgroundColor: `hsl(${
-                hexToHSL(theme.palette.secondary.main).h
+                hexToHSL(theme.palette.primary.main).h
             }, 67%, 88%)`,
             height: "100%",
             width: "100%",
+        },
+        "@media (max-width: 976px)": {
+            portraitImage: {
+                height: 400,
+                width: 400 / IMAGE_RATIO,
+            },
+        },
+        "@media (max-width: 845px)": {
+            portraitImage: {
+                height: 250,
+                width: 250 / IMAGE_RATIO,
+            },
         },
         "@media (max-width: 524px)": {
             container: {
@@ -124,6 +132,25 @@ function Home() {
             group: {
                 display: "flex",
                 flexDirection: "column",
+            },
+            portraitImage: {
+                height: containerSize.width * IMAGE_RATIO,
+                width: containerSize.width,
+            },
+            portraitContainer: {
+                position: "absolute",
+            },
+            portraitContent: {
+                background: "unset",
+                height: containerSize.width * IMAGE_RATIO,
+                zIndex: 1,
+            },
+            portraitText: {
+                padding: "1rem",
+                color: "white",
+                background: `rgba(${Object.values(
+                    hexToRGB(theme.palette.primary.light)
+                )}, 0.5)`,
             },
         },
     }))();
@@ -142,23 +169,76 @@ function Home() {
                     <div className={classes.portraitImage} />
                 </div>
                 <div className={classes.portraitContent}>
-                    <div className={classes.portraitText}>
-                        <Typography
-                            variant="h3"
-                            fontFamily="Kaushan Script"
-                            fontSize="clamp(0rem, 6vw, 3rem)"
+                    {isMobileView ? (
+                        <motion.div
+                            {...slideLeft(false)}
+                            transition={{ duration: 0.5 }}
                         >
-                            Lorem ipsum dolor sit amet.
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            fontSize="clamp(0rem, 3vw, 1rem)"
-                        >
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Dolor eveniet similique totam repellendus id
-                            ut minima rerum voluptatem atque sit?
-                        </Typography>
-                    </div>
+                            <div className={classes.portraitText}>
+                                <Typography
+                                    variant="h3"
+                                    fontFamily="Kaushan Script"
+                                    fontSize="clamp(0rem, 6vw, 3rem)"
+                                >
+                                    What if your best became your average?
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    fontSize="clamp(0rem, 3vw, 1rem)"
+                                >
+                                    Mindset and Performance Coach for people who
+                                    don't like to be limited to what everyone
+                                    else is doing.
+                                </Typography>
+                            </div>
+                        </motion.div>
+                    ) : (
+                        <div className={classes.portraitText}>
+                            <motion.div
+                                {...slideLeft(false, true, "vw")}
+                                animate={{
+                                    x: 0,
+                                    transition: {
+                                        x: {
+                                            duration: 0.5,
+                                            delay: 0.3,
+                                        },
+                                    },
+                                }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Typography
+                                    variant="h3"
+                                    fontFamily="Kaushan Script"
+                                    fontSize="clamp(0rem, 6vw, 3rem)"
+                                >
+                                    What if your best became your average?
+                                </Typography>
+                            </motion.div>
+                            <motion.div
+                                {...slideLeft(false, true, "vw")}
+                                animate={{
+                                    x: 0,
+                                    transition: {
+                                        x: {
+                                            duration: 0.5,
+                                            delay: 0.6,
+                                        },
+                                    },
+                                }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Typography
+                                    variant="body2"
+                                    fontSize="clamp(0rem, 3vw, 1rem)"
+                                >
+                                    Mindset and Performance Coach for people who
+                                    don't like to be limited to what everyone
+                                    else is doing.
+                                </Typography>
+                            </motion.div>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={classes.slideshowContainer}>
