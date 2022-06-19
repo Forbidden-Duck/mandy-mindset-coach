@@ -16,15 +16,15 @@ const store = configureStore({ reducer });
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#00ad9c",
-            light: "#00dbc6",
-            dark: "#008578",
-            contrastText: "#000",
+            main: "#483C32",
+            light: "#54463a",
+            dark: "#362c25",
+            contrastText: "#fff",
         },
         secondary: {
-            main: "#e98c14",
-            light: "#ffaa17",
-            dark: "#cc7608",
+            main: "#008080",
+            light: "#019191",
+            dark: "#016969",
             contrastText: "#000",
         },
     },

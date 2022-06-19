@@ -100,12 +100,12 @@ function ImageSlideshow(props) {
     const ButtonProps = {
         borderRadius: "0",
         bgcolor: `rgba(${Object.values(
-            hexToRGB(theme.palette.secondary.main)
+            hexToRGB(theme.palette.primary.main)
         ).join(",")}, 0.2)`,
         height: "100%",
         "&:hover": {
             bgcolor: `rgba(${Object.values(
-                hexToRGB(theme.palette.secondary.main)
+                hexToRGB(theme.palette.primary.main)
             ).join(",")}, 0.13)`,
         },
     };
@@ -113,7 +113,7 @@ function ImageSlideshow(props) {
         <>
             <IconButton
                 className={classes.left}
-                color="secondary"
+                color="primary"
                 size="large"
                 sx={ButtonProps}
                 onClick={() => paginate(-1)}
@@ -171,7 +171,7 @@ function ImageSlideshow(props) {
                 </div>
             </div>
             <IconButton
-                color="secondary"
+                color="primary"
                 size="large"
                 sx={ButtonProps}
                 onClick={() => paginate(1)}
