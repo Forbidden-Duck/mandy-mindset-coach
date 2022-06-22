@@ -93,10 +93,10 @@ function Footer(props) {
                             className={classes.link}
                             variant="body2"
                             sx={body2Sx}
-                            color="secondary.dark"
-                            onMouseEnter={onLinkMouseEvent("34, 92%, 32%")}
-                            onMouseDown={onLinkMouseEvent("34, 92%, 12%")}
-                            onMouseOut={onLinkMouseEvent("34, 92%, 42%")}
+                            color="secondary"
+                            onMouseEnter={onLinkMouseEvent("180, 100%, 15%")}
+                            onMouseDown={onLinkMouseEvent("180, 100%, 5%")}
+                            onMouseOut={onLinkMouseEvent("180, 100%, 25%")}
                             onClick={() =>
                                 window.open("https://harrisonhoward.xyz/")
                             }
