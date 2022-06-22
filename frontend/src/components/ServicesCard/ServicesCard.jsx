@@ -173,7 +173,15 @@ function ServicesCard(props) {
                                 variant="contained"
                                 size="small"
                                 onClick={handleBook}
-                                sx={{ color: "white" }}
+                                sx={{
+                                    color: "white",
+                                    background: (theme) =>
+                                        theme.palette.primary.light,
+                                    "&:hover": {
+                                        background: (theme) =>
+                                            theme.palette.primary.main,
+                                    },
+                                }}
                             >
                                 Book
                             </Button>
