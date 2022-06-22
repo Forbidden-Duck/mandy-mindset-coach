@@ -131,7 +131,7 @@ function ImageSlideshow(props) {
                             key={imageIndex}
                             style={{
                                 width: "100%",
-                                height: "auto",
+                                height: "100%",
                             }}
                             src={props.images[imageIndex]}
                             onLoad={({ target }) =>
