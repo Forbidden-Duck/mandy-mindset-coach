@@ -137,7 +137,7 @@ function FAQ() {
                 animate={{
                     background: `linear-gradient(160deg, rgba(${Object.values(
                         hexToRGB(theme.palette.primary.light)
-                    )},1) 20%, rgba(255, 255, 255,1) 90%)`,
+                    )},1) 20%, rgba(255, 255, 255,1) 100%)`,
                     transition: {
                         duration: 1,
                         delay: 0.4,
