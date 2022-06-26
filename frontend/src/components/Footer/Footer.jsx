@@ -34,7 +34,7 @@ function Footer(props) {
     }))();
 
     const body2Sx = {
-        fontSize: "clamp(0rem, 3vw, 0.875rem)",
+        fontSize: "clamp(0rem, 2.6vw, 0.875rem)",
     };
 
     const onLinkMouseEvent = (hsl) => {
