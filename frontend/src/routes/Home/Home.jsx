@@ -82,6 +82,31 @@ function Home() {
             maxWidth: "1000px",
             margin: "0rem 2rem",
         },
+        flowerContainer: {
+            position: "relative",
+            backgroundColor: "black",
+            height: "300px",
+            width: "100%",
+            color: "white",
+            zIndex: -1,
+        },
+        flowerImage: {
+            position: "absolute",
+            backgroundImage: "url(/resources/flower-black.png)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "303px",
+            width: "360px",
+            zIndex: -1,
+        },
+        flowerText: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            height: "100%",
+            zIndex: 1,
+        },
         slideshowContainer: {
             display: "flex",
             justifyContent: "center",
@@ -179,6 +204,7 @@ function Home() {
                                     variant="h3"
                                     fontFamily="Kaushan Script"
                                     fontSize="clamp(0rem, 6vw, 3rem)"
+                                    marginBottom="0.4rem"
                                 >
                                     What if your best became your average?
                                 </Typography>
@@ -211,6 +237,7 @@ function Home() {
                                     variant="h3"
                                     fontFamily="Kaushan Script"
                                     fontSize="clamp(0rem, 6vw, 3rem)"
+                                    marginBottom="0.6rem"
                                 >
                                     What if your best became your average?
                                 </Typography>
@@ -231,6 +258,7 @@ function Home() {
                                 <Typography
                                     variant="body2"
                                     fontSize="clamp(0rem, 3vw, 1rem)"
+                                    marginLeft="0.6rem"
                                 >
                                     Mindset and Performance Coach for people who
                                     don't like to be limited to what everyone
@@ -239,6 +267,23 @@ function Home() {
                             </motion.div>
                         </div>
                     )}
+                </div>
+            </div>
+            <div className={classes.flowerContainer}>
+                <div className={classes.flowerImage} />
+                <div className={classes.flowerText}>
+                    <Typography variant="h6">
+                        Have you got some areas that are working and some... not
+                        so much?
+                    </Typography>
+                    <Typography variant="h6">
+                        Are you achieving without the satisfaction and
+                        fulfilment?
+                    </Typography>
+                    <Typography variant="h6">
+                        Do you know you can be more ...but there is something
+                        you can't quite see, in your way?
+                    </Typography>
                 </div>
             </div>
             <div className={classes.slideshowContainer}>
