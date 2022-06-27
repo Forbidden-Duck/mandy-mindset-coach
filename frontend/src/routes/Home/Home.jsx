@@ -56,9 +56,6 @@ function Home() {
         },
         portraitContainer: {
             display: "flex",
-            background: `rgba(${Object.values(
-                hexToRGB(theme.palette.secondary.main)
-            )}, 0.2)`,
         },
         portraitContent: {
             display: "flex",
@@ -102,9 +99,10 @@ function Home() {
         flowerText: {
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "flex-end",
             flexDirection: "column",
             height: "100%",
+			marginRight: "1rem",
             zIndex: 1,
         },
         slideshowContainer: {
