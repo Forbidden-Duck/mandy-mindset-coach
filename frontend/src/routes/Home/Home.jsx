@@ -118,8 +118,7 @@ function Home() {
         },
         testimonialBackground: {
             position: "absolute",
-            backgroundImage:
-                "url(https://cdn.pixabay.com/photo/2017/03/19/01/43/living-room-2155376_960_720.jpg)",
+            backgroundImage: "url(/resources/sunset-mountain.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             height: "85%",
@@ -130,9 +129,10 @@ function Home() {
         },
         testimonialColour: {
             position: "absolute",
+            //backgroundColor: "#c9aa91",
             backgroundColor: `hsl(${
                 hexToHSL(theme.palette.primary.main).h
-            }, 67%, 88%)`,
+            }, 67%, 80%)`,
             height: "100%",
             width: "100%",
         },
