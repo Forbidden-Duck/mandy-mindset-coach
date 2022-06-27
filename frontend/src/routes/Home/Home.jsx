@@ -92,7 +92,7 @@ function Home() {
             backgroundImage: "url(/resources/flower-black.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            height: "303px",
+            height: "300px",
             width: "360px",
             zIndex: -1,
         },
@@ -102,7 +102,7 @@ function Home() {
             alignItems: "flex-end",
             flexDirection: "column",
             height: "100%",
-			marginRight: "1rem",
+            marginRight: "1rem",
             zIndex: 1,
         },
         slideshowContainer: {
