@@ -80,12 +80,13 @@ function Home() {
             margin: "0rem 2rem",
         },
         flowerContainer: {
+            display: "flex",
+            alignItems: "flex-end",
             position: "relative",
             backgroundColor: "black",
             height: "300px",
             width: "100%",
             color: "white",
-            zIndex: -1,
         },
         flowerImage: {
             position: "absolute",
@@ -93,8 +94,7 @@ function Home() {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             height: "300px",
-            width: "360px",
-            zIndex: -1,
+            minWidth: "360px",
         },
         flowerText: {
             display: "flex",
@@ -102,8 +102,17 @@ function Home() {
             alignItems: "flex-end",
             flexDirection: "column",
             height: "100%",
+            width: "100%",
             marginRight: "1rem",
+            marginLeft: "1rem",
             zIndex: 1,
+            "& :not(:last-child)": {
+                marginBottom: "1rem",
+            },
+        },
+        flowerTextBackground: {
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            padding: "0.4rem",
         },
         slideshowContainer: {
             display: "flex",
@@ -141,6 +150,10 @@ function Home() {
                 height: 400,
                 width: 400 / IMAGE_RATIO,
             },
+            flowerImage: {
+                height: "250px",
+                minWidth: "300px",
+            },
         },
         "@media (max-width: 845px)": {
             portraitImage: {
@@ -174,6 +187,10 @@ function Home() {
                 background: `rgba(${Object.values(
                     hexToRGB(theme.palette.primary.light)
                 )}, 0.5)`,
+            },
+            flowerImage: {
+                height: "216px",
+                minWidth: "260px",
             },
         },
     }))();
@@ -270,18 +287,32 @@ function Home() {
             <div className={classes.flowerContainer}>
                 <div className={classes.flowerImage} />
                 <div className={classes.flowerText}>
-                    <Typography variant="h6">
-                        Have you got some areas that are working and some... not
-                        so much?
-                    </Typography>
-                    <Typography variant="h6">
-                        Are you achieving without the satisfaction and
-                        fulfilment?
-                    </Typography>
-                    <Typography variant="h6">
-                        Do you know you can be more ...but there is something
-                        you can't quite see, in your way?
-                    </Typography>
+                    <div className={classes.flowerTextBackground}>
+                        <Typography
+                            variant="h6"
+                            fontFamily="Kaushan Script"
+                            fontSize="clamp(0.8rem, 2.7vw, 1.5rem)"
+                        >
+                            Have you got some areas that are working and some...
+                            not so much?
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            fontFamily="Kaushan Script"
+                            fontSize="clamp(0.8rem, 2.7vw, 1.5rem)"
+                        >
+                            Are you achieving without the satisfaction and
+                            fulfilment?
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            fontFamily="Kaushan Script"
+                            fontSize="clamp(0.8rem, 2.5vw, 1.5rem)"
+                        >
+                            Do you know you can be more... but there is
+                            something you can't quite see, in your way?
+                        </Typography>
+                    </div>
                 </div>
             </div>
             <div className={classes.slideshowContainer}>
