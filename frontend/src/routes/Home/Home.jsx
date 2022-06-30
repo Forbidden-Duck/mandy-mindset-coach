@@ -125,7 +125,7 @@ function Home() {
             width: "100%",
             paddingTop: "3rem",
             paddingBottom: "1.5rem",
-            opacity: 0.2,
+            opacity: 0.3,
         },
         testimonialColour: {
             position: "absolute",
