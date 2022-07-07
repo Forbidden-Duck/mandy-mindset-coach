@@ -5,13 +5,15 @@ import { motion } from "framer-motion";
 import FAQAccordion from "../../components/FAQAccordion/FAQAccordion";
 
 import hexToRGB from "../../utils/hexToRGB";
-
 import fadeInOut from "../../animations/fadeInOut";
+
+const GRADIENT_COLOUR = "224, 168, 11";
+//${Object.values(hexToRGB(theme.palette.primary.light))}
 
 function FAQ() {
     const classes = makeStyles((theme) => ({
         titleContainer: {
-            color: theme.palette.primary.contrastText,
+            color: "black",
             width: "100%",
             padding: "3rem 0",
             marginBottom: "1rem",
@@ -130,23 +132,17 @@ function FAQ() {
             <motion.div
                 className={classes.titleContainer}
                 initial={{
-                    background: `linear-gradient(160deg, rgba(${Object.values(
-                        hexToRGB(theme.palette.primary.light)
-                    )},1) 100%, rgba(255, 255, 255,1) 0%)`,
+                    background: `linear-gradient(160deg, rgba(${GRADIENT_COLOUR}, 1) 100%, rgba(255, 255, 255,1) 0%)`,
                 }}
                 animate={{
-                    background: `linear-gradient(160deg, rgba(${Object.values(
-                        hexToRGB(theme.palette.primary.light)
-                    )},1) 20%, rgba(255, 255, 255,1) 100%)`,
+                    background: `linear-gradient(160deg, rgba(${GRADIENT_COLOUR}, 1) 20%, rgba(255, 255, 255,1) 100%)`,
                     transition: {
                         duration: 1,
                         delay: 0.4,
                     },
                 }}
                 exit={{
-                    background: `linear-gradient(160deg, rgba(${Object.values(
-                        hexToRGB(theme.palette.primary.light)
-                    )},1) 0%, rgba(255, 255, 255,1) 0%)`,
+                    background: `linear-gradient(160deg, rgba(${GRADIENT_COLOUR}, 1) 0%, rgba(255, 255, 255,1) 0%)`,
                 }}
                 transition={{ duration: 0.6 }}
             >
