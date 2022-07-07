@@ -21,8 +21,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NavButton from "./NavButton";
 
-const MIN_NAV_HEIGHT = 88;
-const LOGO_WIDTH = 200;
+const MIN_NAV_HEIGHT = 90;
+const LOGO_WIDTH = 150;
 const LOGO_RATIO = 0.60606060606060606060606060606061;
 
 /**
