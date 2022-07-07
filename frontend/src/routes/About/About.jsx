@@ -23,6 +23,7 @@ function About() {
             margin: "2rem 0",
             padding: "1rem 0",
             textAlign: "center",
+            boxShadow: "10px 10px hsl(0, 0%, 15%)",
             transition: "width 0.5s ease-in-out",
         },
         content: {
