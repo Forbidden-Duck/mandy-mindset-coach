@@ -126,28 +126,18 @@ function Home() {
             position: "relative",
             minHeight: "400px",
             width: "100%",
-            paddingBottom: "4.5rem",
+            marginBottom: "4.5rem",
         },
         testimonialBackground: {
             position: "absolute",
             backgroundImage: "url(/resources/sunset-mountain.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            height: "85%",
-            width: "100%",
-            paddingTop: "3rem",
-            paddingBottom: "1.5rem",
-            filter: "blur(3px)",
-            zIndex: -1,
-        },
-        testimonialColour: {
-            position: "absolute",
-            //backgroundColor: "#c9aa91",
-            backgroundColor: `hsl(${
-                hexToHSL(theme.palette.primary.main).h
-            }, 67%, 80%)`,
             height: "100%",
             width: "100%",
+            paddingBottom: "4.5rem",
+            filter: "blur(3px)",
+            zIndex: -1,
         },
         "@media (max-width: 976px)": {
             portraitImage: {
