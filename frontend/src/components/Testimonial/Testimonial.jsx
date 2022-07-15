@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography, Card } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 
@@ -61,6 +61,8 @@ const CHILD_TEXT_ANIMATION = {
     },
 };
 
+const TYPOGRAPHY_COLOUR = "245";
+
 /**
  *
  * @param {{ portrait: string, name: string, quote: string }} props
@@ -73,6 +75,7 @@ function Testimonial(props) {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            padding: theme.spacing(2),
         },
         portraitContainer: {
             height: PORTRAIT_SIZE,
@@ -89,7 +92,16 @@ function Testimonial(props) {
     }))();
 
     return (
-        <div className={classes.container}>
+        <Card
+            className={classes.container}
+            sx={{
+                borderRadius: "16px",
+                background: "rgba(255, 255, 255, 0.2)",
+                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                backdropFilter: "blur(5px)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+        >
             <div className={classes.portraitContainer}>
                 <motion.div
                     className={classes.portrait}
@@ -115,7 +127,10 @@ function Testimonial(props) {
                 <Typography
                     variant="h4"
                     fontWeight={500}
-                    sx={{ marginTop: "0.5rem" }}
+                    sx={{
+                        marginTop: "0.5rem",
+                        color: `rgb(${TYPOGRAPHY_COLOUR}, ${TYPOGRAPHY_COLOUR}, ${TYPOGRAPHY_COLOUR})`,
+                    }}
                 >
                     {props.name}
                 </Typography>
@@ -135,12 +150,13 @@ function Testimonial(props) {
                         marginTop: "0.3rem",
                         width: "300px",
                         textAlign: "center",
+                        color: `rgb(${TYPOGRAPHY_COLOUR}, ${TYPOGRAPHY_COLOUR}, ${TYPOGRAPHY_COLOUR})`,
                     }}
                 >
                     {props.quote}
                 </Typography>
             </motion.div>
-        </div>
+        </Card>
     );
 }
 

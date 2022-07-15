@@ -134,7 +134,8 @@ function Home() {
             width: "100%",
             paddingTop: "3rem",
             paddingBottom: "1.5rem",
-            opacity: 0.3,
+            filter: "blur(3px)",
+            zIndex: -1,
         },
         testimonialColour: {
             position: "absolute",
@@ -319,7 +320,6 @@ function Home() {
                 <ImageSlideshow images={IMAGES} />
             </div>
             <div className={classes.testimonialContainer}>
-                <div className={classes.testimonialColour} />
                 <div className={classes.testimonialBackground} />
                 <Grid
                     container
