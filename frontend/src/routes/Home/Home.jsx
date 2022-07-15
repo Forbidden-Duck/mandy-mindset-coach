@@ -136,7 +136,7 @@ function Home() {
             height: "100%",
             width: "100%",
             paddingBottom: "4.5rem",
-            filter: "blur(3px)",
+            filter: "blur(5px)",
             zIndex: -1,
         },
         "@media (max-width: 976px)": {
