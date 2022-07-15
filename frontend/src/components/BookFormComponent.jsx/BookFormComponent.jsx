@@ -131,7 +131,17 @@ function BookFormComponent(props) {
             >
                 {(formik) => (
                     <Form className={classes.card}>
-                        <Card elevation={10}>
+                        <Card
+                            elevation={10}
+                            sx={{
+                                borderRadius: "6px",
+                                background: "rgba(255, 255, 255, 0.8)",
+                                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                                boxShadow: "6px 6px 5px rgba(0, 0, 0, 0.2)",
+                                backdropFilter: "blur(5px)",
+                                border: "1px solid rgba(200, 200, 200, 0.1)",
+                            }}
+                        >
                             <motion.div
                                 initial={{ x: "-300px", opacity: 0 }}
                                 animate={{
@@ -237,7 +247,6 @@ function BookFormComponent(props) {
                                         rows={6}
                                         sx={{
                                             width: "100%",
-                                            background: "white",
                                             zIndex: 1,
                                         }}
                                         multiline

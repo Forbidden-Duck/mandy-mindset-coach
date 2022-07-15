@@ -67,7 +67,7 @@ function ServicesCard(props) {
             sx={{
                 maxWidth: "400px",
                 borderRadius: "6px",
-                background: "rgba(255, 255, 255, 0.6)",
+                background: "rgba(255, 255, 255, 0.8)",
                 boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
                 boxShadow: "6px 6px 5px rgba(0, 0, 0, 0.2)",
                 backdropFilter: "blur(5px)",
