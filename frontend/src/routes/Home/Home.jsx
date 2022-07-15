@@ -111,8 +111,11 @@ function Home() {
             },
         },
         flowerTextBackground: {
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            padding: "0.4rem",
+            padding: "1rem",
+            borderRadius: "16px",
+            background: `rgba(0, 0, 0, 0.1)`,
+            boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+            backdropFilter: "blur(5px)",
         },
         slideshowContainer: {
             display: "flex",
@@ -184,10 +187,13 @@ function Home() {
             },
             portraitText: {
                 padding: "1rem",
-                color: "white",
+                borderRadius: "16px",
                 background: `rgba(${Object.values(
                     hexToRGB(theme.palette.primary.light)
-                )}, 0.5)`,
+                )}, 0.3)`,
+                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                backdropFilter: "blur(5px)",
+                border: "1px solid rgba(0, 0, 0, 0.1)",
             },
             flowerImage: {
                 height: "216px",
