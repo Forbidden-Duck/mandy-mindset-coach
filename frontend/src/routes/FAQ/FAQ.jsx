@@ -123,6 +123,7 @@ function FAQ() {
         },
     ];
 
+    // TODO NO GRADIENT & BACKGROUND INSTEAD
     return (
         <motion.div
             {...fadeInOut()}

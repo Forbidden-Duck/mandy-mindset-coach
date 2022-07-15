@@ -287,7 +287,7 @@ function Home() {
                     <div className={classes.flowerTextBackground}>
                         <Typography
                             variant="h6"
-                            fontFamily="Kaushan Script"
+                            fontFamily="Impact"
                             fontSize="clamp(0.8rem, 2.7vw, 1.5rem)"
                         >
                             Have you got some areas that are working and some...
@@ -295,7 +295,7 @@ function Home() {
                         </Typography>
                         <Typography
                             variant="h6"
-                            fontFamily="Kaushan Script"
+                            fontFamily="Impact"
                             fontSize="clamp(0.8rem, 2.7vw, 1.5rem)"
                         >
                             Are you achieving without the satisfaction and
@@ -303,7 +303,7 @@ function Home() {
                         </Typography>
                         <Typography
                             variant="h6"
-                            fontFamily="Kaushan Script"
+                            fontFamily="Impact"
                             fontSize="clamp(0.8rem, 2.5vw, 1.5rem)"
                         >
                             Do you know you can be more... but there is

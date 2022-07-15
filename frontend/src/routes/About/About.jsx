@@ -23,7 +23,7 @@ function About() {
             padding: "1rem 0",
             textAlign: "center",
             borderRadius: "16px",
-            background: `rgba(${CARD_COLOUR}, ${CARD_COLOUR}, ${CARD_COLOUR}, 0.4)`,
+            background: `rgba(${CARD_COLOUR}, ${CARD_COLOUR}, ${CARD_COLOUR}, 0.8)`,
             boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
             boxShadow: "10px 10px 5px rgba(0, 0, 0, 0.2)",
             backdropFilter: "blur(5px)",

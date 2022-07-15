@@ -67,7 +67,7 @@ function Error404() {
             >
                 <Typography
                     variant="h1"
-                    color="primary.main"
+                    color="primary.dark"
                     fontWeight={500}
                     sx={h1Sx}
                 >
@@ -111,6 +111,7 @@ function Error404() {
             >
                 <Button
                     variant="outlined"
+                    color="primary"
                     size="medium"
                     component={Link}
                     to="/"
