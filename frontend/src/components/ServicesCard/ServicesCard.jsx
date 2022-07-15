@@ -63,7 +63,17 @@ function ServicesCard(props) {
     };
 
     return (
-        <Card sx={{ maxWidth: "400px" }}>
+        <Card
+            sx={{
+                maxWidth: "400px",
+                borderRadius: "6px",
+                background: "rgba(255, 255, 255, 0.6)",
+                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                boxShadow: "6px 6px 5px rgba(0, 0, 0, 0.2)",
+                backdropFilter: "blur(5px)",
+                border: "1px solid rgba(200, 200, 200, 0.1)",
+            }}
+        >
             <div className={classes.cardImageContainer}>
                 {props.isLoading ? (
                     <Skeleton
