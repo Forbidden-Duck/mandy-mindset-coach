@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import fadeInOut from "../../animations/fadeInOut";
 import slideLeft from "../../animations/slideLeft";
 
-const CARD_COLOUR = 240;
+const CARD_COLOUR = 255;
 
 function About() {
     const classes = makeStyles((theme) => ({
@@ -17,13 +17,17 @@ function About() {
             width: "100%",
         },
         card: {
-            background: `rgb(${CARD_COLOUR}, ${CARD_COLOUR}, ${CARD_COLOUR})`,
             width: "80%",
             maxWidth: "1000px",
             margin: "2rem 0",
             padding: "1rem 0",
             textAlign: "center",
-            boxShadow: "10px 10px hsl(0, 0%, 15%)",
+            borderRadius: "16px",
+            background: `rgba(${CARD_COLOUR}, ${CARD_COLOUR}, ${CARD_COLOUR}, 0.4)`,
+            boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+            boxShadow: "10px 10px 5px rgba(0, 0, 0, 0.2)",
+            backdropFilter: "blur(5px)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
             transition: "width 0.5s ease-in-out",
         },
         content: {
