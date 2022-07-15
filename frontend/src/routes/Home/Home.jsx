@@ -90,7 +90,7 @@ function Home() {
         },
         flowerImage: {
             position: "absolute",
-            backgroundImage: "url(/resources/flower-black.png)",
+            backgroundImage: "url(/resources/flower-nobg.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             height: "300px",
